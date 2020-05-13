@@ -4,8 +4,8 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.shiftmanagment.database.Database;
 
-public class MainActivityViewModel extends ViewModel {
+public class EmployeeShiftViewModel extends ViewModel {
 
-    private  Database database = Database.getInstance();
+    private Database database = Database.getInstance();
 
 }
