@@ -26,7 +26,7 @@ public class Database {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-
+                    //add something
                 }
                 else
                 {
