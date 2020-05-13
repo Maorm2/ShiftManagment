@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">ShiftManagment</string>
+    <string name="log_out">Log out</string>
+    <string name="manage_employees">Manage employees</string>
+    <string name="manage_shifts">Manage shifts</string>
+    <string name="my_shifts">My shifts</string>
+    <string name="my_salary">My salary</string>
+    <string name="enter_your_mail">Enter your mail</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">Forgot password?</string>
 </resources>
