@@ -1,8 +1,11 @@
 package com.example.shiftmanagment.database;
 
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -37,16 +40,16 @@ public class Database {
     }
 
     //sign in the user
-    public void signInUser(final String username,final String password){
+    public void signInUser(final String username,final String password,final View v){
         mAuth.signInWithEmailAndPassword(username,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-
+                    Snackbar.make(v,"Login Successful",Snackbar.LENGTH_LONG);
                 }
                 else
                 {
-
+                    Snackbar.make(v,"Wrong username or password",Snackbar.LENGTH_LONG);
                 }
             }
         });

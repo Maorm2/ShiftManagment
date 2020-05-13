@@ -30,7 +30,8 @@
             android:layout_marginTop="10dp"
             android:textColor="@android:color/black"
             android:hint="Enter your mail"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:id="@+id/emailInput_login"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -39,8 +40,15 @@
             android:layout_marginTop="10dp"
             android:textColor="@android:color/black"
             android:hint="Enter your password"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:id="@+id/passwordInput_login"/>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:background="#cace"
+            android:id="@+id/login_btn"/>
 
 </LinearLayout>
 
