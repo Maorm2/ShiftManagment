@@ -1,6 +1,7 @@
 package com.example.shiftmanagment.database;
 
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,16 +25,16 @@ public class Database {
 
 
     //sign up users
-    public void createUser(final String username,final String password){
+    public void createUser(final String username,final String password,final View v){
         mAuth.createUserWithEmailAndPassword(username,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-
+                    Snackbar.make(v,"Registration succeed",Snackbar.LENGTH_LONG);
                 }
                 else
                 {
-
+                    Snackbar.make(v,"Registration Failed",Snackbar.LENGTH_LONG);
                 }
             }
         });
@@ -45,11 +46,12 @@ public class Database {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Snackbar.make(v,"Login Successful",Snackbar.LENGTH_LONG);
+                    Snackbar.make(v,"Login Successful",Snackbar.LENGTH_LONG).show();
                 }
                 else
                 {
-                    Snackbar.make(v,"Wrong username or password",Snackbar.LENGTH_LONG);
+                   Snackbar.make(v,"Wrong username or password",Snackbar.LENGTH_LONG).show();
+
                 }
             }
         });

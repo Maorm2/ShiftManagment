@@ -9,18 +9,16 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.shiftmanagment.R;
-import com.example.shiftmanagment.database.Database;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.example.shiftmanagment.viewmodel.MainActivityViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserProfileChangeRequest;
+
 
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseAuth.AuthStateListener authStateListener;
-    private Database mDatabase = Database.getInstance();
+    private MainActivityViewModel mainActivityViewModel = new MainActivityViewModel();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,15 +28,13 @@ public class MainActivity extends AppCompatActivity {
         final EditText userEmail = findViewById(R.id.emailInput_login);
         final EditText userPass = findViewById(R.id.passwordInput_login);
 
-        Button loginBtn = findViewById(R.id.login_btn);
-
-
+        Button loginBtn = findViewById(R.id.loginBtn);
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = userEmail.getText().toString();
-                String password = userPass.getText().toString();
-                mDatabase.signInUser(username,password,v);
+                String username = userEmail.getText().toString().trim();
+                String password = userPass.getText().toString().trim();
+                mainActivityViewModel.signInUser(username,password,v);
             }
         });
 
