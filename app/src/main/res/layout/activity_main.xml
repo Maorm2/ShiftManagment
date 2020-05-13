@@ -24,34 +24,60 @@
 
 
         <EditText
+            android:id="@+id/enterYourMail"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_margin="15dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:textColor="@android:color/black"
-            android:hint="Enter your mail"
-            android:textStyle="bold"
-            android:id="@+id/emailInput_login"/>
+            android:hint="@string/enter_your_mail"
+            android:maxLines="1"
+            android:paddingStart="5dp"
+            android:singleLine="true"
+            android:textSize="25dp"
+            android:layout_margin="15dp"/>
 
         <EditText
+            android:id="@+id/EnterYourPassword"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_margin="15dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:textColor="@android:color/black"
-            android:hint="Enter your password"
-            android:textStyle="bold"
-            android:id="@+id/passwordInput_login"/>
+            android:hint="@string/enter_your_password"
+            android:maxLines="1"
+            android:paddingStart="5dp"
+            android:singleLine="true"
+            android:textSize="25dp"
+            android:layout_margin="15dp"/>
 
         <Button
-            android:layout_width="wrap_content"
+            android:id="@+id/forgotPasswordBtn"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="right"
+            android:background="@android:color/transparent"
+            android:text="@string/forgot_password"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black" />
+
+
+        <Button
+            android:id="@+id/loginBtn"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Login"
-            android:background="#cace"
-            android:id="@+id/login_btn"/>
+            android:layout_margin="20dp"
+            android:text="@string/login"
+            android:textAllCaps="false"
+            android:textSize="30dp"/>
 
 </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+    </LinearLayout>
 
 
 
