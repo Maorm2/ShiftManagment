@@ -24,26 +24,40 @@
 
 
         <EditText
+            android:id="@+id/email"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_margin="15dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:textColor="@android:color/black"
-            android:hint="Enter your mail"
-            android:textStyle="bold" />
+            android:hint="mail"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:paddingStart="15dp"
+            android:singleLine="true"
+            android:textSize="25dp"
+            android:layout_margin="15dp"/>
 
         <EditText
+            android:id="@+id/password"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_margin="15dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:textColor="@android:color/black"
-            android:hint="Enter your password"
-            android:textStyle="bold" />
+            android:hint="password"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:paddingStart="15dp"
+            android:singleLine="true"
+            android:textSize="25dp"
+            android:layout_margin="15dp"/>
 
 
 </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+    </LinearLayout>
 
 
 
