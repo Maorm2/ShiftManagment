@@ -1,6 +1,8 @@
 package com.example.shiftmanagment.database;
 
 import androidx.annotation.NonNull;
+
+import com.example.shiftmanagment.view.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -21,32 +23,33 @@ public class Database {
 
 
     //sign up users
-    public void createUser(final String username,final String password){
+    public void createUser(final String username, final String password){
         mAuth.createUserWithEmailAndPassword(username,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    //add something
+
                 }
                 else
                 {
-                    //add something
+
                 }
             }
         });
     }
 
     //sign in the user
-    public void signInUser(final String username,final String password){
+    public void signInUser(final String username,final String password , final MainActivity.LogInActions logInActions){
         mAuth.signInWithEmailAndPassword(username,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-
+                    logInActions.LogInSuccessfully();
                 }
+
                 else
                 {
-
+                    logInActions.LogInFailed();
                 }
             }
         });

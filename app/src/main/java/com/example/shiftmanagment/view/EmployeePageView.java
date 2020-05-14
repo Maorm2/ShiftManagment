@@ -13,14 +13,13 @@ import com.example.shiftmanagment.viewmodel.EmployeePageViewModel;
 public class EmployeePageView extends AppCompatActivity {
 
     private EmployeePageViewModel viewModel = new EmployeePageViewModel();
-    private Button btnSignOut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee_page_view);
 
-        btnSignOut = findViewById(R.id.logOutEmployeeBtn);
+        Button btnSignOut = findViewById(R.id.logOutEmployeeBtn);
         btnSignOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -31,5 +30,22 @@ public class EmployeePageView extends AppCompatActivity {
             }
         });
 
+        Button btnMoveToMyShifts = findViewById(R.id.myShiftsBtn);
+        btnMoveToMyShifts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(EmployeePageView.this, EmployeeShiftView.class);
+                startActivity(intent);
+            }
+        });
+
+        Button btnMoveTOMySalary = findViewById(R.id.mySalaryBtn);
+        btnMoveTOMySalary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(EmployeePageView.this, EmployeeSalaryView.class);
+                startActivity(intent);
+            }
+        });
     }
 }

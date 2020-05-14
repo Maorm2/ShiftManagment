@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.EmployeeSalaryView"></activity>
+        <activity android:name=".view.EmployeeSalaryView" />
+        <activity android:name=".view.EmployeePageView" />
         <activity android:name=".view.EmployeeShiftView" />
         <activity android:name=".view.ManageShiftsView" />
         <activity android:name=".view.ManageEmployeeView" />

@@ -43,16 +43,16 @@
             android:layout_margin="20dp"
             android:text="@string/manage_employees"
             android:textAllCaps="false"
-            android:textSize="30dp"/>
+            android:textSize="30dp" />
 
         <Button
-            android:id="@+id/loginBtn"
+            android:id="@+id/btn_manage_shift"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:text="@string/manage_shifts"
             android:textAllCaps="false"
-            android:textSize="30dp"/>
+            android:textSize="30dp" />
     </LinearLayout>
 
 

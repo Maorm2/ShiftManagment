@@ -3,12 +3,20 @@ package com.example.shiftmanagment.view;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.shiftmanagment.R;
 import com.example.shiftmanagment.util.Shift;
+import com.example.shiftmanagment.viewmodel.MainActivityViewModel;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.sql.Date;
 import java.sql.Time;
@@ -19,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseAuth.AuthStateListener authStateListener;
+    private MainActivityViewModel viewModel = new MainActivityViewModel();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +41,39 @@ public class MainActivity extends AppCompatActivity {
 
             }
         };
+
+        Button btnLogIn = findViewById(R.id.loginBtn);
+        btnLogIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText editTextUserName = findViewById(R.id.text_user_name);
+                EditText editTextPassword = findViewById(R.id.text_password);
+                String userName = editTextUserName.getText().toString();
+                String password = editTextPassword.getText().toString();
+
+                Log.d("log","User name: " + userName + "\nPassword: " + password );
+
+                viewModel.signInUser(userName, password, new LogInActions() {
+                    @Override
+                    public void LogInSuccessfully() {
+                        //***need to add logic if admin or employee***
+                        Intent intent = new Intent(getApplicationContext(), EmployeePageView.class);
+                        startActivity(intent);
+                        finish();
+                    }
+
+                    @Override
+                    public void LogInFailed() {
+                        Toast toast = Toast.makeText(MainActivity.this,
+                                "Wrong User Name Or Password!",
+                                Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+                });
+            }
+        });
+
+
 
 //        Shift shift = new Shift(new Time(20,0,0), new Time(23,0,0));
 //        Log.d("Log",String.valueOf(shift.getDuration()));
@@ -53,5 +95,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         mAuth.removeAuthStateListener(authStateListener);
+    }
+    
+    public interface LogInActions {
+        void LogInSuccessfully();
+        void LogInFailed();
     }
 }
