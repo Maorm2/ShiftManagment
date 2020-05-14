@@ -1,18 +1,22 @@
 package com.example.shiftmanagment.database;
 
-import android.view.View;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
+
+import com.example.shiftmanagment.util.User;
+import com.example.shiftmanagment.view.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Database {
 
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private static Database instance = null;
     private Database(){}
@@ -25,33 +29,41 @@ public class Database {
 
 
     //sign up users
-    public void createUser(final String username,final String password,final View v){
+    public void createUser(final String username, final String password){
         mAuth.createUserWithEmailAndPassword(username,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Snackbar.make(v,"Registration succeed",Snackbar.LENGTH_LONG);
+
                 }
                 else
                 {
-                    Snackbar.make(v,"Registration Failed",Snackbar.LENGTH_LONG);
+
                 }
             }
         });
     }
 
     //sign in the user
-    public void signInUser(final String username,final String password,final View v){
+    public void signInUser(final String username,final String password , final MainActivity.LogInActions logInActions){
         mAuth.signInWithEmailAndPassword(username,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Snackbar.make(v,"Login Successful",Snackbar.LENGTH_LONG).show();
+                    mAuth = FirebaseAuth.getInstance();
+                    DocumentReference mDocRef = db.document("users/" + mAuth.getUid());
+                    mDocRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        @Override
+                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                            User loggedInUser = documentSnapshot.toObject(User.class);
+                            logInActions.LogInSuccessfully(loggedInUser);
+                        }
+                    });
                 }
+
                 else
                 {
-                   Snackbar.make(v,"Wrong username or password",Snackbar.LENGTH_LONG).show();
-
+                    logInActions.LogInFailed();
                 }
             }
         });

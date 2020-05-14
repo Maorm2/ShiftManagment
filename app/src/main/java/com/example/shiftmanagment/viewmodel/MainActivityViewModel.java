@@ -5,6 +5,7 @@ import android.view.View;
 import androidx.lifecycle.ViewModel;
 
 import com.example.shiftmanagment.database.Database;
+import com.example.shiftmanagment.view.MainActivity;
 
 public class MainActivityViewModel extends ViewModel {
 
@@ -12,6 +13,10 @@ public class MainActivityViewModel extends ViewModel {
 
     public void signInUser(String username, String password, View v) {
         mDatabase.signInUser(username, password, v);
+    }
+
+    public void signInUser(final String username,final String password , final MainActivity.LogInActions logInActions){
+        database.signInUser(username, password, logInActions);
     }
 
 }

@@ -9,4 +9,13 @@
     <string name="enter_your_password">Enter your password</string>
     <string name="login">Login</string>
     <string name="forgot_password">Forgot password?</string>
+    <string name="registration">Registration</string>
+    <string name="salary_for_hour">Salary for hour</string>
+    <string name="Enter_employee_password">Enter employee password</string>
+    <string name="Enter_employee_mail">Enter employee email</string>
+    <string name="is_admin">Is admin</string>
+    <string name="back">Back ></string>
+    <string name="enter_employee_first_name">Enter employee first name</string>
+    <string name="enter_employee_last_name">Enter employee last name</string>
+    <string name="add_new_employee">Add new employee</string>
 </resources>
