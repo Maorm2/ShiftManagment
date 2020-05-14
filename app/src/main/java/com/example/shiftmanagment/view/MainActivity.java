@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.shiftmanagment.R;
 import com.example.shiftmanagment.util.Shift;
+import com.example.shiftmanagment.util.User;
 import com.example.shiftmanagment.viewmodel.MainActivityViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -51,15 +52,20 @@ public class MainActivity extends AppCompatActivity {
                 String userName = editTextUserName.getText().toString();
                 String password = editTextPassword.getText().toString();
 
-                Log.d("log","User name: " + userName + "\nPassword: " + password );
-
                 viewModel.signInUser(userName, password, new LogInActions() {
                     @Override
-                    public void LogInSuccessfully() {
-                        //***need to add logic if admin or employee***
-                        Intent intent = new Intent(getApplicationContext(), EmployeePageView.class);
-                        startActivity(intent);
-                        finish();
+                    public void LogInSuccessfully(User user) {
+                        Log.d("mylog ", user.toString());
+                        if(user.isManager()){
+                            Intent intent = new Intent(getApplicationContext(), AdminPageView.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                        else{
+                            Intent intent = new Intent(getApplicationContext(), EmployeePageView.class);
+                            startActivity(intent);
+                            finish();
+                        }
                     }
 
                     @Override
@@ -98,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
     }
     
     public interface LogInActions {
-        void LogInSuccessfully();
+        void LogInSuccessfully(User user);
         void LogInFailed();
     }
 }

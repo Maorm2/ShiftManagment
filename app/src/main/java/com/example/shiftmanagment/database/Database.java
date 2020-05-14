@@ -2,15 +2,21 @@ package com.example.shiftmanagment.database;
 
 import androidx.annotation.NonNull;
 
+import com.example.shiftmanagment.util.User;
 import com.example.shiftmanagment.view.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Database {
 
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private static Database instance = null;
     private Database(){}
@@ -44,7 +50,15 @@ public class Database {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    logInActions.LogInSuccessfully();
+                    mAuth = FirebaseAuth.getInstance();
+                    DocumentReference mDocRef = db.document("users/" + mAuth.getUid());
+                    mDocRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        @Override
+                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                            User loggedInUser = documentSnapshot.toObject(User.class);
+                            logInActions.LogInSuccessfully(loggedInUser);
+                        }
+                    });
                 }
 
                 else
