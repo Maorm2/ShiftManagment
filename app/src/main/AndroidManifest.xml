@@ -14,15 +14,12 @@
         <activity android:name=".view.EmployeeShiftView" />
         <activity android:name=".view.ManageShiftsView" />
         <activity android:name=".view.ManageEmployeeView" />
-        <activity android:name=".view.AdminPageView" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
+        <activity android:name=".view.AdminPageView" />
         <activity android:name=".view.MainActivity">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
