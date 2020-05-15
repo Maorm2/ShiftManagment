@@ -40,13 +40,13 @@ public class AdminPageView extends AppCompatActivity {
             }
         });
 
-        Button btnMoveToManageShift = findViewById(R.id.btn_manage_shift);
+       /* Button btnMoveToManageShift = findViewById(R.id.btn_manage_shift);
         btnMoveToManageShift.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AdminPageView.this, ManageShiftsView.class);
                 startActivity(intent);
             }
-        });
+        });*/
     }
 }
