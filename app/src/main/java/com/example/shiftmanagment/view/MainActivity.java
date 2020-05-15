@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.shiftmanagment.R;
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        Button btnLogIn = findViewById(R.id.loginBtn);
+        ImageView btnLogIn = findViewById(R.id.loginBtn);
         btnLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
