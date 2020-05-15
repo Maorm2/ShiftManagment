@@ -1,15 +1,15 @@
 package com.example.shiftmanagment.util;
 
-public class User {
+public class Employee {
 
     private String firstName;
     private String lastName;
     private int salary;
     private boolean Manager;
 
-    public User() {}
+    public Employee() {}
 
-    public User(String firstName, String lastName, int salary, boolean Manager) {
+    public Employee(String firstName, String lastName, int salary, boolean Manager) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.salary = salary;

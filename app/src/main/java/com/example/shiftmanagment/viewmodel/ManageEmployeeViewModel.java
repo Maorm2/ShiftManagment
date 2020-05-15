@@ -12,7 +12,7 @@ public class ManageEmployeeViewModel extends ViewModel {
     private Database mDatabase = Database.getInstance();
 
     public void signUpUser(String email, String password, View v){
-        mDatabase.createUser(email,password,v);
+        mDatabase.createUser(email,password);
     }
 
 }

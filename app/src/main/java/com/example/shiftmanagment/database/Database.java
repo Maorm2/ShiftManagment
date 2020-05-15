@@ -2,7 +2,7 @@ package com.example.shiftmanagment.database;
 
 import androidx.annotation.NonNull;
 
-import com.example.shiftmanagment.util.User;
+import com.example.shiftmanagment.util.Employee;
 import com.example.shiftmanagment.view.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -55,7 +55,7 @@ public class Database {
                     mDocRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                         @Override
                         public void onSuccess(DocumentSnapshot documentSnapshot) {
-                            User loggedInUser = documentSnapshot.toObject(User.class);
+                            Employee loggedInUser = documentSnapshot.toObject(Employee.class);
                             logInActions.LogInSuccessfully(loggedInUser);
                         }
                     });

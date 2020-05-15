@@ -11,12 +11,12 @@ public class MainActivityViewModel extends ViewModel {
 
     private  Database mDatabase = Database.getInstance();
 
-    public void signInUser(String username, String password, View v) {
-        mDatabase.signInUser(username, password, v);
-    }
+//    public void signInUser(String username, String password, View v) {
+//        mDatabase.signInUser(username, password, v);
+//    }
 
     public void signInUser(final String username,final String password , final MainActivity.LogInActions logInActions){
-        database.signInUser(username, password, logInActions);
+        mDatabase.signInUser(username, password, logInActions);
     }
 
 }

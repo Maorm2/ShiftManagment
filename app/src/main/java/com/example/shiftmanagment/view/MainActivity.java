@@ -12,17 +12,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.shiftmanagment.R;
-import com.example.shiftmanagment.util.Shift;
-import com.example.shiftmanagment.util.User;
+import com.example.shiftmanagment.util.Employee;
 import com.example.shiftmanagment.viewmodel.MainActivityViewModel;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.sql.Date;
-import java.sql.Time;
-import java.time.Clock;
-import java.time.Period;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,7 +31,9 @@ public class MainActivity extends AppCompatActivity {
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-
+                if(firebaseAuth.getCurrentUser() != null){
+                    
+                }
             }
         };
 
@@ -54,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
                 viewModel.signInUser(userName, password, new LogInActions() {
                     @Override
-                    public void LogInSuccessfully(User user) {
+                    public void LogInSuccessfully(Employee user) {
                         Log.d("mylog ", user.toString());
                         if(user.isManager()){
                             Intent intent = new Intent(getApplicationContext(), AdminPageView.class);
@@ -104,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
     }
     
     public interface LogInActions {
-        void LogInSuccessfully(User user);
+        void LogInSuccessfully(Employee user);
         void LogInFailed();
     }
 }
