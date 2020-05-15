@@ -44,6 +44,19 @@ public class Database {
         });
     }
 
+    public void isManager(final MainActivity.isManagerCallback callback){
+        mAuth = FirebaseAuth.getInstance();
+        DocumentReference mDocRef = db.document("users/" + mAuth.getUid());
+        mDocRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                Employee loggedInUser = documentSnapshot.toObject(Employee.class);
+                callback.moveToNextPage(loggedInUser);
+            }
+        });
+
+    }
+
     //sign in the user
     public void signInUser(final String username,final String password , final MainActivity.LogInActions logInActions){
         mAuth.signInWithEmailAndPassword(username,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {

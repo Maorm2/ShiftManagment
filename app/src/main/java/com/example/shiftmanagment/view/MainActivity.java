@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -31,9 +32,8 @@ public class MainActivity extends AppCompatActivity {
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if(firebaseAuth.getCurrentUser() != null){
-                    
-                }
+
+
             }
         };
 
@@ -74,11 +74,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-//        Shift shift = new Shift(new Time(20,0,0), new Time(23,0,0));
-//        Log.d("Log",String.valueOf(shift.getDuration()));
-
-
     }
 
 
@@ -101,4 +96,8 @@ public class MainActivity extends AppCompatActivity {
         void LogInSuccessfully(Employee user);
         void LogInFailed();
     }
+
+    public interface isManagerCallback{
+        void moveToNextPage(Employee employee);
+}
 }
