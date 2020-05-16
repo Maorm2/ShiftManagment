@@ -18,4 +18,5 @@
     <string name="enter_employee_first_name">Enter employee first name</string>
     <string name="enter_employee_last_name">Enter employee last name</string>
     <string name="add_new_employee">Add new employee</string>
+    <string name="create_a_new_employee">Create a new employee</string>
 </resources>
