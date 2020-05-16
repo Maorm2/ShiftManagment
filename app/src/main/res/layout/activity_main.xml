@@ -79,7 +79,7 @@
                     />
 
                 <View
-                    android:layout_width="263.7dp"
+                    android:layout_width="263dp"
                     android:layout_height="1dp"
                     android:layout_gravity="left"
                     android:layout_marginTop="7dp"
@@ -117,7 +117,7 @@
                 </LinearLayout>
 
                 <View
-                    android:layout_width="263.7dp"
+                    android:layout_width="263dp"
                     android:layout_height="1dp"
                     android:layout_gravity="left"
                     android:layout_marginTop="7dp"
@@ -130,23 +130,23 @@
                     android:textSize="15sp"
                     android:textColor="#f2f2f3"
                     android:layout_gravity="right"
-                    android:layout_marginTop="17.3dp"
+                    android:layout_marginTop="17dp"
                     android:text="Forgot Password?"
                     />
 
             </LinearLayout>
             <FrameLayout
-                android:layout_width="40.7dp"
-                android:layout_height="45.3dp"
+                android:layout_width="50dp"
+                android:layout_height="55dp"
                 android:layout_gravity="bottom|right"
-                android:layout_marginRight="27.3dp"
-                android:layout_marginBottom="43.7dp"
+                android:layout_marginRight="28dp"
+                android:layout_marginBottom="45dp"
                 android:background="@drawable/white_hexagone">
 
                 <ImageView
                     android:id="@+id/loginBtn"
-                    android:layout_width="18.7dp"
-                    android:layout_height="15.3dp"
+                    android:layout_width="40dp"
+                    android:layout_height="25dp"
                     android:layout_gravity="center"
                     android:src="@drawable/right_arrow"/>
             </FrameLayout>
