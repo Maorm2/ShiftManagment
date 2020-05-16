@@ -2,18 +2,38 @@ package com.example.shiftmanagment.util;
 
 public class Employee {
 
+    private  String email;
+    private String password;
     private String firstName;
     private String lastName;
-    private int salary;
+    private double salary;
     private boolean Manager;
 
     public Employee() {}
 
-    public Employee(String firstName, String lastName, int salary, boolean Manager) {
+    public Employee(String email,String password,String firstName, String lastName, double salary, boolean Manager) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.salary = salary;
         this.Manager = Manager;
+        this.email = email;
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFirstName() {
@@ -32,7 +52,7 @@ public class Employee {
         this.lastName = lastName;
     }
 
-    public int getSalary() {
+    public double getSalary() {
         return salary;
     }
 
@@ -50,11 +70,13 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "User{" +
-                "firstName='" + firstName + '\'' +
+        return "Employee{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", salary=" + salary +
-                ", isManager=" + Manager +
+                ", Manager=" + Manager +
                 '}';
     }
 }

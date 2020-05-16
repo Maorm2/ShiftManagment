@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.shiftmanagment.R;
@@ -34,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                if(firebaseAuth.getCurrentUser() != null){
+
+                }
 
 
             }
@@ -51,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 viewModel.signInUser(userName, password, new LogInActions() {
                     @Override
                     public void LogInSuccessfully(Employee user) {
-                        Log.d("mylog ", user.toString());
+                       // Log.d("mylog ", user.toString());
                         if(user.isManager()){
                             Intent intent = new Intent(getApplicationContext(), AdminPageView.class);
                             startActivity(intent);
@@ -97,6 +101,11 @@ public class MainActivity extends AppCompatActivity {
     public interface LogInActions {
         void LogInSuccessfully(Employee user);
         void LogInFailed();
+    }
+
+
+    public interface registerActions{
+        void registerSucceed(boolean succeed);
     }
 
     public interface isManagerCallback{
