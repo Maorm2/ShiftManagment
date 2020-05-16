@@ -13,7 +13,7 @@
         <activity android:name=".view.EmployeePageView" />
         <activity android:name=".view.EmployeeShiftView" />
         <activity android:name=".view.ManageShiftsView" />
-        <activity android:name=".view.ManageEmployeeView" />
+        <activity android:name=".fragment.ManageEmployeeFragment" />
         <activity android:name=".view.AdminPageView" >
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />

@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/new_employee_layout"
     android:orientation="vertical">
 
     <LinearLayout
@@ -36,7 +37,7 @@
             android:textSize="15dp"/>
 
         <EditText
-            android:id="@+id/employee_first_name_ED"
+            android:id="@+id/employee_first_name_Et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -48,7 +49,7 @@
             android:layout_margin="15dp"/>
 
         <EditText
-            android:id="@+id/employee_last_name_ED"
+            android:id="@+id/employee_last_name_Et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -60,7 +61,7 @@
             android:layout_margin="15dp"/>
 
         <EditText
-            android:id="@+id/employee_mail_ED"
+            android:id="@+id/employee_mail_Et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -72,7 +73,7 @@
             android:layout_margin="15dp"/>
 
         <EditText
-            android:id="@+id/employee_password_ED"
+            android:id="@+id/employee_password_Et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -84,11 +85,11 @@
             android:layout_margin="15dp"/>
 
         <EditText
-            android:id="@+id/salary_for_hour_employee_ED"
+            android:id="@+id/salary_per_hour_employee_Et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:hint="@string/salary_for_hour"
+            android:hint="salary per hour"
             android:maxLines="1"
             android:paddingStart="5dp"
             android:singleLine="true"
@@ -96,7 +97,7 @@
             android:layout_margin="15dp"/>
 
         <CheckBox
-            android:id="@+id/checkBox"
+            android:id="@+id/isAdmin_Cb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/is_admin"
