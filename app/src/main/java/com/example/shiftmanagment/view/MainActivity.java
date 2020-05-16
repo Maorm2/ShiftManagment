@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.shiftmanagment.R;
@@ -29,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ProgressBar progressBar = findViewById(R.id.progress_circular_login);
+        progressBar.setVisibility(View.GONE);
 
 
         authStateListener = new FirebaseAuth.AuthStateListener() {
@@ -43,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         btnLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ProgressBar progressBar = findViewById(R.id.progress_circular_login);
+                progressBar.setVisibility(View.VISIBLE);
                 EditText editTextUserName = findViewById(R.id.text_user_name);
                 EditText editTextPassword = findViewById(R.id.text_password);
                 String userName = editTextUserName.getText().toString();
@@ -51,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
                 viewModel.signInUser(userName, password, new LogInActions() {
                     @Override
                     public void LogInSuccessfully(Employee user) {
-                        Log.d("mylog ", user.toString());
                         if(user.isManager()){
                             Intent intent = new Intent(getApplicationContext(), AdminPageView.class);
                             startActivity(intent);

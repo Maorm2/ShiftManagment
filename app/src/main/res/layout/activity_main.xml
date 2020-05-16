@@ -136,6 +136,10 @@
 
             </LinearLayout>
             <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom">
+            <FrameLayout
                 android:layout_width="40.7dp"
                 android:layout_height="45.3dp"
                 android:layout_gravity="bottom|right"
@@ -150,6 +154,12 @@
                     android:layout_gravity="center"
                     android:src="@drawable/right_arrow"/>
             </FrameLayout>
+                <ProgressBar
+                    android:id="@+id/progress_circular_login"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"/>
+        </FrameLayout>
         </FrameLayout>
     </LinearLayout>
 </LinearLayout>
