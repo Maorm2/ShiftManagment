@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.EmployeeShiftView">
+    tools:context=".view.EmployeeShiftView"
+    android:background="@drawable/back_ground">
 
     <RelativeLayout
         android:layout_width="match_parent"
