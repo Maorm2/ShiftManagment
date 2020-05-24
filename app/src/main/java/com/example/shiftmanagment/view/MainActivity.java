@@ -84,6 +84,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
+//        Shift shift = new Shift(new Time(20,0,0), new Time(23,0,0));
+//        Log.d("Log",String.valueOf(shift.getDuration()));
+
+
     }
 
 
