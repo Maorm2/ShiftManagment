@@ -98,3 +98,4 @@
         android:background="@drawable/small_cicle"
              android:layout_marginStart="170dp"/>
 </LinearLayout>
+</LinearLayout>
