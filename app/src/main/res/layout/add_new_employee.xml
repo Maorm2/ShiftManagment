@@ -55,7 +55,7 @@
             android:textStyle="bold"
             android:layout_marginTop="60dp"/>
         <EditText
-            android:id="@+id/employee_first_name_ED"
+            android:id="@+id/employee_first_name_Et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter_employee_first_name"
@@ -67,7 +67,7 @@
             android:layout_marginTop="18dp"/>
 
         <EditText
-            android:id="@+id/employee_last_name_ED"
+            android:id="@+id/employee_last_name_Et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter_employee_last_name"
@@ -79,7 +79,7 @@
             android:layout_marginTop="18dp"/>
 
         <EditText
-            android:id="@+id/employee_mail_ED"
+            android:id="@+id/employee_mail_Et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/Enter_employee_mail"
@@ -91,7 +91,7 @@
             android:layout_marginTop="18dp"/>
 
         <EditText
-            android:id="@+id/employee_password_ED"
+            android:id="@+id/employee_password_Et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/Enter_employee_password"
@@ -103,7 +103,7 @@
             android:layout_marginTop="18dp"/>
 
         <EditText
-            android:id="@+id/salary_for_hour_employee_ED"
+            android:id="@+id/salary_per_hour_employee_Et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/salary_for_hour"
@@ -115,7 +115,7 @@
             android:layout_marginTop="18dp"/>
 
         <CheckBox
-            android:id="@+id/checkBox"
+            android:id="@+id/isAdmin_Cb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/is_admin"

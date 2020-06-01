@@ -22,7 +22,7 @@
             android:background="@drawable/hmnnew" />
 
         <Button
-            android:id="@+id/logOutAdminBtn"
+            android:id="@+id/logOutEmployeeBtn"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_gravity="left"
