@@ -16,6 +16,8 @@ import com.example.shiftmanagment.fragment.ManageEmployeeFragment;
 import com.example.shiftmanagment.fragment.NewEmployeeFragment;
 import com.example.shiftmanagment.viewmodel.AdminPageViewModel;
 
+import java.util.Calendar;
+
 public class AdminPageView extends AppCompatActivity implements CallbackFragment {
 
     Fragment fragment;
@@ -28,6 +30,18 @@ public class AdminPageView extends AppCompatActivity implements CallbackFragment
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_page_view);
+
+
+
+        Calendar cal = Calendar.getInstance();
+        Intent intent = new Intent(Intent.ACTION_EDIT);
+        intent.setType("vnd.android.cursor.item/event");
+        intent.putExtra("beginTime", cal.getTimeInMillis());
+        intent.putExtra("allDay", true);
+        intent.putExtra("rrule", "FREQ=YEARLY");
+        intent.putExtra("endTime", cal.getTimeInMillis()+60*60*1000);
+        intent.putExtra("title", "A Test Event from android app");
+        startActivity(intent);
 
 
         Button btnSignOut = findViewById(R.id.logOutAdminBtn);
@@ -49,14 +63,6 @@ public class AdminPageView extends AppCompatActivity implements CallbackFragment
             }
         });
 
-       /* Button btnMoveToManageShift = findViewById(R.id.btn_manage_shift);
-        btnMoveToManageShift.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AdminPageView.this, ManageShiftsView.class);
-                startActivity(intent);
-            }
-        });*/
     }
 
     public void addFragment(){

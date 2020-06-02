@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -41,7 +42,7 @@ public class NewEmployeeFragment extends Fragment {
         final EditText salaryPerHourEt = view.findViewById(R.id.salary_per_hour_employee_Et);
         final CheckBox isAdminCb = view.findViewById(R.id.isAdmin_Cb);
 
-        final Button addNewEmployeeBtn = view.findViewById(R.id.add_new_employee_Btn);
+        final ImageView addNewEmployeeBtn = view.findViewById(R.id.add_new_employee_Btn);
         addNewEmployeeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
