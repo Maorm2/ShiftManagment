@@ -2,6 +2,8 @@ package com.example.shiftmanagment.util;
 
 import com.google.firebase.firestore.DocumentReference;
 
+import java.util.HashMap;
+
 public class Employee {
 
     private  String email;
@@ -11,6 +13,9 @@ public class Employee {
     private double salary;
     private boolean Manager;
     private DocumentReference shiftRef;
+//    private HashMap<String, String> currentWeekShifts;
+//    private HashMap<String, String> nextWeekShifts;
+
 
     public Employee() {}
 

@@ -1,5 +1,7 @@
 package com.example.shiftmanagment.util;
 
+import org.threeten.bp.LocalDate;
+
 import java.sql.Time;
 import java.util.Calendar;
 import java.util.Date;
@@ -7,38 +9,29 @@ import java.util.GregorianCalendar;
 
 public class Shift {
 
-    private Time startTime;
-    private Time endTime;
-    private float duration;
+    private LocalDate date;
+    private String timeInDay;
 
-    public Shift(Time startTime, Time endTime ){
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.duration = endTime.compareTo(startTime);
+    public Shift() {}
 
+    public Shift(LocalDate date, String timeInDay) {
+        this.date = date;
+        this.timeInDay = timeInDay;
     }
 
-    public Time getStartTime() {
-        return startTime;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setStartTime(Time startTime) {
-        this.startTime = startTime;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
-    public Time getEndTime() {
-        return endTime;
+    public String getTimeInDay() {
+        return timeInDay;
     }
 
-    public void setEndTime(Time endTime) {
-        this.endTime = endTime;
-    }
-
-    public float getDuration() {
-        return duration;
-    }
-
-    public void setDuration(float duration) {
-        this.duration = duration;
+    public void setTimeInDay(String timeInDay) {
+        this.timeInDay = timeInDay;
     }
 }

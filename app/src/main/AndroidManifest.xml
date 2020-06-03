@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".view.EmployeeViewShiftsView"></activity>
         <activity android:name=".view.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,9 +22,7 @@
         <activity android:name=".view.EmployeeShiftView" />
         <activity android:name=".view.ManageShiftsView" />
         <activity android:name=".view.AdminPageView" />
-        <activity android:name=".view.MainActivity">
-
-        </activity>
+        <activity android:name=".view.MainActivity"></activity>
     </application>
 
 </manifest>

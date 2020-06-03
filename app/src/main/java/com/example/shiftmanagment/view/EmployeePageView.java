@@ -47,5 +47,14 @@ public class EmployeePageView extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button btnMoveToViewShifts = findViewById(R.id.viewShiftsBtn);
+        btnMoveToViewShifts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(EmployeePageView.this, EmployeeViewShiftsView.class);
+                startActivity(intent);
+            }
+        });
     }
 }
