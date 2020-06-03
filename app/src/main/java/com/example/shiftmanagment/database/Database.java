@@ -5,7 +5,11 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.example.shiftmanagment.util.Employee;
+import com.example.shiftmanagment.util.PoolUser;
+import com.example.shiftmanagment.util.WeekShift;
+import com.example.shiftmanagment.view.EmployeeShiftView;
 import com.example.shiftmanagment.view.MainActivity;
+import com.example.shiftmanagment.viewmodel.EmployeeShiftViewModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -48,6 +52,7 @@ public class Database {
                 if(task.isSuccessful()){
                     Log.d("onComplete","Arrive");
                     userID = mAuth.getCurrentUser().getUid();
+                    employee.setRef(db.collection("users").document(userID).collection("usersShit").document(userID));
                     DocumentReference documentReference = db.collection("users").document(userID);
                     documentReference.set(employee).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
@@ -135,4 +140,27 @@ public class Database {
         return list;
     }
 
+    public String getUserID(){
+        return mAuth.getUid();
+    }
+
+    public void addWeekShiftToPool(PoolUser user, final EmployeeShiftView.Callback callback){
+        db.collection("pool").document(user.getUid()).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                callback.onSuccess();
+            }
+        });
+    }
+
+    public void getCurrentEmpFromDb(final EmployeeShiftViewModel.OnDataRetrieve callBack){
+        final Employee emp;
+        db.collection("users").document(mAuth.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                Employee emp = documentSnapshot.toObject(Employee.class);
+                callBack.onEmployee(emp , mAuth.getUid());
+            }
+        });
+    }
 }

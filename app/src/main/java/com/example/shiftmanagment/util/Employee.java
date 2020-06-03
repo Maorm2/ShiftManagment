@@ -1,5 +1,7 @@
 package com.example.shiftmanagment.util;
 
+import com.google.firebase.firestore.DocumentReference;
+
 public class Employee {
 
     private  String email;
@@ -8,6 +10,7 @@ public class Employee {
     private String lastName;
     private double salary;
     private boolean Manager;
+    private DocumentReference shiftRef;
 
     public Employee() {}
 
@@ -66,6 +69,14 @@ public class Employee {
 
     public void setManager(boolean manager) {
         Manager = manager;
+    }
+
+    public DocumentReference getRef() {
+        return shiftRef;
+    }
+
+    public void setRef(DocumentReference ref) {
+        this.shiftRef = ref;
     }
 
     @Override
