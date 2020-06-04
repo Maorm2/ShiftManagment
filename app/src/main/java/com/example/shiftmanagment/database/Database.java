@@ -226,14 +226,7 @@ public class Database {
         });
     }
 
-    public void getShiftForCurrentWeek(final EmployeeViewShiftsView.Callback callback){
-        db.collection("users").document(mAuth.getUid()).collection("shifts").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                List<Shift> shifts = queryDocumentSnapshots.toObjects(Shift.class);
-            }
-        });
-    }
+
 
     public void publishShifts(final boolean isShiftsPublished) {
         HashMap<String, Boolean> isPublish = new HashMap<>();
@@ -269,13 +262,5 @@ public class Database {
             }
         });
     }
-//    public void getShiftForCurrentWeek(final EmployeeViewShiftsView.Callback callback){
-//        db.collection("users").document(mAuth.getUid()).collection("shifts").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-//            @Override
-//            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-//                List<Shift> shifts = queryDocumentSnapshots.toObjects(Shift.class);
-////                callback.
-//            }
-//        });
-//    }
+
 }
