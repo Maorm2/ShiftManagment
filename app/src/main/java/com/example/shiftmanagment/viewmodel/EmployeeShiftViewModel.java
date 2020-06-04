@@ -7,6 +7,7 @@ import com.example.shiftmanagment.util.Employee;
 import com.example.shiftmanagment.util.PoolUser;
 import com.example.shiftmanagment.util.WeekShift;
 import com.example.shiftmanagment.view.EmployeeShiftView;
+import com.example.shiftmanagment.view.ManageShiftsView;
 
 import org.threeten.bp.LocalDate;
 
@@ -38,6 +39,10 @@ public class EmployeeShiftViewModel extends ViewModel {
 
     public void addWeekShiftToDb( EmployeeShiftView.Callback callBack ){
         db.addWeekShiftToPool(user, callBack);
+    }
+
+    public void getPublishShifts(ManageShiftsView.OnCallbackShifts callbackShifts) {
+        db.getPublishShifts(callbackShifts);
     }
 
     public interface OnDataRetrieve{
