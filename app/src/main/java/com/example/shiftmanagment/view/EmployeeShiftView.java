@@ -1,14 +1,13 @@
 package com.example.shiftmanagment.view;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.shiftmanagment.R;
 import com.example.shiftmanagment.viewmodel.EmployeeShiftViewModel;
@@ -18,12 +17,7 @@ import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
 import org.threeten.bp.DayOfWeek;
 import org.threeten.bp.LocalDate;
-import org.threeten.bp.LocalDateTime;
-import org.threeten.bp.temporal.TemporalAdjuster;
 import org.threeten.bp.temporal.TemporalAdjusters;
-
-import java.util.Calendar;
-import java.util.Date;
 
 public class EmployeeShiftView extends AppCompatActivity implements View.OnClickListener {
 
@@ -52,7 +46,15 @@ public class EmployeeShiftView extends AppCompatActivity implements View.OnClick
         bunAddShift.setOnClickListener(this);
         bunPlaceShifts.setOnClickListener(this);
 
+        viewModel.getPublishShifts(new ManageShiftsView.OnCallbackShifts() {
+            @Override
+            public void setPublishShifts(boolean isPublish) {
+                if(!isPublish){
+                    // cancel the request shifts button
+                }
 
+            }
+        });
 
         LocalDate nextSunday = LocalDate.now().with(TemporalAdjusters.next(DayOfWeek.SUNDAY));
 
@@ -101,4 +103,5 @@ public class EmployeeShiftView extends AppCompatActivity implements View.OnClick
     public interface Callback{
         void onSuccess();
     }
+
 }

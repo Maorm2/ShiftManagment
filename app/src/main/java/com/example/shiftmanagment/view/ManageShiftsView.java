@@ -1,6 +1,8 @@
 package com.example.shiftmanagment.view;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -27,17 +29,41 @@ import java.util.List;
 import java.util.Map;
 
 
-public class ManageShiftsView extends AppCompatActivity {
+public class ManageShiftsView<isShiftsPublished> extends AppCompatActivity {
 
     private ManageShiftsViewModel viewModel = new ManageShiftsViewModel();
     private  RecyclerView recyclerView;
     private FragmentManager fragmentManager;
     private FragmentTransaction transaction;
+    private boolean isShiftsPublished = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.emloyee_list_requests);
+
+        viewModel.getPublishShifts(new OnCallbackShifts() {
+            @Override
+            public void setPublishShifts(boolean isPublish) {
+                isShiftsPublished = isPublish;
+            }
+        });
+
+        final Button publishShiftsBtn = findViewById(R.id.publish_shifts_btn);
+        publishShiftsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!isShiftsPublished) {
+                    publishShiftsBtn.setText("Lock Publish Shifts");
+                    isShiftsPublished = true;
+                }
+                else {
+                    publishShiftsBtn.setText("Publish Shifts");
+                    isShiftsPublished = false;
+                }
+                viewModel.publishShifts(isShiftsPublished);
+            }
+        });
 
         recyclerView = findViewById(R.id.recyclerview_employee_requests);
         recyclerView.setHasFixedSize(true);
@@ -79,5 +105,8 @@ public class ManageShiftsView extends AppCompatActivity {
 
     public interface onCallback{
         void setRequestList(List<PoolUser> employees);
+    }
+    public interface OnCallbackShifts{
+        void setPublishShifts(boolean isPublish);
     }
 }

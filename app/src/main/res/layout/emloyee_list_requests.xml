@@ -2,6 +2,7 @@
 
 <RelativeLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -16,5 +17,18 @@
             android:layout_height="match_parent"
             android:id="@+id/recyclerview_employee_requests"/>
 
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerview_employee_requests"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        android:text="Publish Shifts"
+        android:textAllCaps="false"
+        android:id="@+id/publish_shifts_btn"
+        />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>

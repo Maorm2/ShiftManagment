@@ -34,6 +34,7 @@ import com.google.firebase.firestore.WriteBatch;
 
 import org.threeten.bp.LocalDate;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -191,37 +192,27 @@ public class Database {
         });
     }
 
-    public void shiftsApprove(HashMap<String, String> shifts, PoolUser user) {
+    public void shiftsApprove(HashMap<String, String> shifts, PoolUser user) throws ParseException {
 
         WriteBatch batch = db.batch();
 
         for(Map.Entry <String,String> entry : shifts.entrySet()){
             String date = entry.getKey();
-            String shift = entry.getValue();
+            String shift = entry.getValue();;
+            String[] split = date.split("-");
+            String newDate = split[2]+ "-" + split[1]+ "-" +split[0];
 
             HashMap <String, Object> map = new HashMap<>();
 
             map.put("date", date);
-            map.put("shift", shift);
-            map.put("timeStamp", new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date()));
+            map.put("timeInDay", shift);
+            map.put("timeStamp", newDate);
 
             db.collection("users").document(user.getUid()).collection("shifts")
                     .document(date).set(map);
-         //   batch.set(mDocRef,new Shift((date),shift));
 
         }
 
-      /*  batch.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                Log.d(TAG, "onSuccess: Shifts successfully inserted to DB" );
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.d(TAG, "onFilure: Shifts unsuccessfully inserted to DB" );
-            }
-        });*/
 
     }
 
@@ -235,6 +226,49 @@ public class Database {
         });
     }
 
+    public void getShiftForCurrentWeek(final EmployeeViewShiftsView.Callback callback){
+        db.collection("users").document(mAuth.getUid()).collection("shifts").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                List<Shift> shifts = queryDocumentSnapshots.toObjects(Shift.class);
+            }
+        });
+    }
+
+    public void publishShifts(final boolean isShiftsPublished) {
+        HashMap<String, Boolean> isPublish = new HashMap<>();
+        String shiftPublish= "shiftsPublished";
+        isPublish.put(shiftPublish,isShiftsPublished);
+        db.collection("shiftsPublished").document("flags")
+                .set(isPublish).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d(TAG, "onSuccess: Shifts Published:" + isShiftsPublished);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d(TAG, "onFailure: Error with publish the shifts");
+            }
+        });
+    }
+
+    public void getPublishShifts(final ManageShiftsView.OnCallbackShifts onCallbackShifts) {
+        db.collection("shiftsPublished").document("flags")
+                .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+               Boolean isPublish =  (Boolean)documentSnapshot.get("shiftsPublished");
+                onCallbackShifts.setPublishShifts(isPublish);
+                Log.d(TAG, "onSuccess: Successfully retrieve the flag from DB");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d(TAG, "onFailure: Unsuccessfully retrieve the flag from DB");
+            }
+        });
+    }
 //    public void getShiftForCurrentWeek(final EmployeeViewShiftsView.Callback callback){
 //        db.collection("users").document(mAuth.getUid()).collection("shifts").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
 //            @Override

@@ -20,4 +20,12 @@ public class ManageShiftsViewModel extends ViewModel {
     public void shiftsApproved(HashMap<String, String> shifts,PoolUser user) throws ParseException {
         database.shiftsApprove(shifts,user);
     }
+
+    public void publishShifts(boolean isShiftsPublished) {
+        database.publishShifts(isShiftsPublished);
+    }
+
+    public void getPublishShifts(ManageShiftsView.OnCallbackShifts onCallbackShifts) {
+        database.getPublishShifts(onCallbackShifts);
+    }
 }
