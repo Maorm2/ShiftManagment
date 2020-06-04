@@ -5,12 +5,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.shiftmanagment.R;
 import com.example.shiftmanagment.util.Shift;
+import com.example.shiftmanagment.viewmodel.EmployeeViewShiftsViewModel;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.DayViewDecorator;
 import com.prolificinteractive.materialcalendarview.DayViewFacade;
@@ -32,12 +34,16 @@ import java.util.Map;
 public class EmployeeViewShiftsView extends AppCompatActivity {
 
     private LocalDate shiftDate;
+    private EmployeeViewShiftsViewModel viewModel;
+    private List<Shift> shiftsList;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee_view_shifts_view);
+
+        viewModel = new EmployeeViewShiftsViewModel();
 
         final TextView textDate = findViewById(R.id.shift_view_text_date);
         final TextView textTime = findViewById(R.id.shift_view_text_time);
@@ -49,6 +55,40 @@ public class EmployeeViewShiftsView extends AppCompatActivity {
         final MaterialCalendarView materialCalendarView = findViewById(R.id.emp_view_shifts_calendarView);
         materialCalendarView.state().edit().setMinimumDate(nextSunday)
                 .setMaximumDate(CalendarDay.from(nextSunday.plusDays(7))).commit();
+
+        LocalDate sunday = LocalDate.now().with(TemporalAdjusters.previous(DayOfWeek.SUNDAY));
+        LocalDate next = sunday.plusDays(7);
+
+        String fromDate = sunday.toString();
+
+        String[] fromDatesplit = fromDate.split("-");
+        String newFromDate = fromDatesplit[2]+ "-" + fromDatesplit[1]+ "-" +fromDatesplit[0];
+
+        String toDate = next.toString();
+
+        String[] toDateSplit = toDate.split("-");
+        String newToDate = toDateSplit[2]+ "-" + toDateSplit[1]+ "-" +toDateSplit[0];
+
+        Log.d("TAG", "from date " + newFromDate + "to date: "+ newToDate);
+
+        viewModel.getShiftsForCurrentWeek(newFromDate, newToDate, new EmployeeSalaryView.Callback() {
+            @Override
+            public void onGetShitCallback(List<Shift> shifts) {
+                shiftsList = shifts;
+
+                Collection<CalendarDay> dates = new ArrayList<>();
+
+                for(Shift shift : shiftsList){
+                    CalendarDay day = CalendarDay.from(LocalDate.parse(shift.getDate()));
+                    dates.add(day);
+                }
+                materialCalendarView.addDecorator(new EventDecorator(R.color.colorPrimary, dates));
+            }
+        });
+
+
+
+
 
 
         final HashMap<String, Shift> shifts = new HashMap<>();
@@ -87,6 +127,9 @@ public class EmployeeViewShiftsView extends AppCompatActivity {
         });
 
 
+
+
+
     }
 
     class EventDecorator implements DayViewDecorator{
@@ -110,7 +153,4 @@ public class EmployeeViewShiftsView extends AppCompatActivity {
         }
     }
 
-    public interface Callback{
-        void onGetShiftsCallback(HashMap<String, Shift> shifts);
-    }
 }

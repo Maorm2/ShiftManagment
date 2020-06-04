@@ -11,8 +11,10 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 
 import com.example.shiftmanagment.R;
+import com.example.shiftmanagment.util.Employee;
 import com.example.shiftmanagment.util.Shift;
 import com.example.shiftmanagment.viewmodel.EmployeeSalaryViewModel;
+import com.example.shiftmanagment.viewmodel.EmployeeShiftViewModel;
 
 import java.util.Calendar;
 import java.util.List;
@@ -23,6 +25,8 @@ public class EmployeeSalaryView extends AppCompatActivity {
     private EmployeeSalaryViewModel viewModel;
     private TextView textViewShiftsList;
     private TextView textViewTotalMoney;
+    private Employee employee;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,15 @@ public class EmployeeSalaryView extends AppCompatActivity {
         setContentView(R.layout.activity_employee_salary_view);
 
         viewModel = new EmployeeSalaryViewModel();
+
+        viewModel.getCurrentEmp(new EmployeeShiftViewModel.OnDataRetrieve() {
+            @Override
+            public void onEmployee(Employee emp, String uId) {
+                employee = emp;
+            }
+        });
+
+
 
         final TextView dateFrom = findViewById(R.id.text_date_from);
         final TextView toDate = findViewById(R.id.text_to_date);
@@ -51,7 +64,16 @@ public class EmployeeSalaryView extends AppCompatActivity {
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                                dateFrom.setText( year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+                                String dayLeadZero = "";
+                                String monthLeadZero = "";
+                                if (dayOfMonth <10){
+                                    dayLeadZero = "0";
+                                }
+                                if(monthOfYear < 10){
+                                    monthLeadZero = "0";
+                                }
+
+                                dateFrom.setText(dayLeadZero + dayOfMonth + "-" +monthLeadZero+ (monthOfYear + 1) + "-" + year);
                             }
                         }, year, month, day);
                 picker.show();
@@ -71,7 +93,16 @@ public class EmployeeSalaryView extends AppCompatActivity {
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                                toDate.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+                                String dayLeadZero = "";
+                                String monthLeadZero = "";
+                                if (dayOfMonth <10){
+                                    dayLeadZero = "0";
+                                }
+                                if(monthOfYear < 10){
+                                    monthLeadZero = "0";
+                                }
+
+                                toDate.setText(dayLeadZero + dayOfMonth + "-" +monthLeadZero+ (monthOfYear + 1) + "-" + year);
                             }
                         }, year, month, day);
                 picker.show();
@@ -89,7 +120,7 @@ public class EmployeeSalaryView extends AppCompatActivity {
                     @Override
                     public void onGetShitCallback(List<Shift> shifts) {
                         String textShifts = "";
-                        String totalSalary = String.valueOf(shifts.size() * 20) + " $"; // need to get from emp
+                        String totalSalary = String.valueOf(shifts.size() * employee.getSalary()) + " $"; // need to get from emp
 
                         for(Shift shift : shifts){
                             String line ="Date: " + shift.getDate() + " Time: " + shift.getTimeInDay() +"\n";
