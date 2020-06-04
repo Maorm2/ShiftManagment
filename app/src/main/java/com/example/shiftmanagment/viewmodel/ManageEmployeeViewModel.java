@@ -7,6 +7,7 @@ import android.view.View;
 import androidx.lifecycle.ViewModel;
 
 import com.example.shiftmanagment.database.Database;
+import com.example.shiftmanagment.fragment.ManageEmployeeFragment;
 import com.example.shiftmanagment.util.Employee;
 import com.example.shiftmanagment.view.MainActivity;
 
@@ -20,10 +21,8 @@ public class ManageEmployeeViewModel extends ViewModel {
         mDatabase.createUser(employee,registerActions);
     }
 
-    public List<Employee> loadEmployees(){
-       List<Employee> list = mDatabase.loadEmployees();
-       Log.d("list View", list.size()+"");
-        return list;
+    public void loadEmployees(ManageEmployeeFragment.loadEmployeeList loadEmployeeList){
+      mDatabase.loadEmployees(loadEmployeeList);
     }
 
 }

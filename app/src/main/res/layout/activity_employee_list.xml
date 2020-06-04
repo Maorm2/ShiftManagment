@@ -23,14 +23,14 @@
         android:orientation="vertical"
         android:gravity="bottom">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addNewEmployee_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:src="@drawable/plus_icon"
-        android:contentDescription="submit"
-        android:layout_margin="40dp" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addNewEmployee_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="40dp"
+            android:contentDescription="submit"
+            android:src="@drawable/plus_icon" />
     </LinearLayout>
     </RelativeLayout>
 

@@ -52,17 +52,17 @@ public class EmployeeViewShiftsView extends AppCompatActivity {
 
 
         final HashMap<String, Shift> shifts = new HashMap<>();
-        shifts.put("2020-06-07" , new Shift(LocalDate.parse("2020-06-07"), "Morning"));
+ /*       shifts.put("2020-06-07" , new Shift(LocalDate.parse("2020-06-07"), "Morning"));
         shifts.put("2020-06-08" , new Shift(LocalDate.parse("2020-06-08"), "Evening"));
         shifts.put("2020-06-12" , new Shift(LocalDate.parse("2020-06-12"), "Morning"));
-        shifts.put("2020-06-14" , new Shift(LocalDate.parse("2020-06-14"), "Night"));
+        shifts.put("2020-06-14" , new Shift(LocalDate.parse("2020-06-14"), "Night"));*/
 
         Collection<CalendarDay> dates = new ArrayList<>();
 
         for(Map.Entry entry : shifts.entrySet()){
             Shift shift = (Shift) entry.getValue();
-            CalendarDay day = CalendarDay.from(shift.getDate());
-            dates.add(day);
+           // CalendarDay day = CalendarDay.from(shift.getDate());
+          //  dates.add(day);
         }
 
 

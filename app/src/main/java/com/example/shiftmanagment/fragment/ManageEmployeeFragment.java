@@ -1,6 +1,7 @@
 package com.example.shiftmanagment.fragment;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,6 +25,7 @@ public class ManageEmployeeFragment extends Fragment{
 
     private ManageEmployeeViewModel viewModel = new ManageEmployeeViewModel();
     private CallbackFragment callbackFragment;
+    private RecyclerView recyclerView;
 
     @Nullable
     @Override
@@ -30,41 +33,14 @@ public class ManageEmployeeFragment extends Fragment{
 
         View rootView = inflater.inflate(R.layout.activity_employee_list,container,false);
 
-        RecyclerView recyclerView = rootView.findViewById(R.id.recyclerview_employee);
+        recyclerView = rootView.findViewById(R.id.recyclerview_employee);
         recyclerView.setHasFixedSize(true);
+
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        List<Employee> employees = loadList();
-        employees.add(new Employee("Maor@gmmail.com","123445","Maor","Minyan",5000,true));
-        employees.add(new Employee("Maor@gmmail.com","123445","Maor","Minyan",5000,true));
-        employees.add(new Employee("Maor@gmmail.com","123445","Maor","Minyan",5000,true));
-        employees.add(new Employee("Maor@gmmail.com","123445","Maor","Minyan",5000,true));
-        employees.add(new Employee("Maor@gmmail.com","123445","Maor","Minyan",5000,true));
-        employees.add(new Employee("Maor@gmmail.com","123445","Maor","Minyan",5000,true));
-        employees.add(new Employee("Maor@gmmail.com","123445","Maor","Minyan",5000,true));
-        employees.add(new Employee("Maor@gmmail.com","123445","Maor","Minyan",5000,true));
-        employees.add(new Employee("Maor@gmmail.com","123445","Maor","Minyan",5000,true));
-        employees.add(new Employee("Maor@gmmail.com","123445","Maor","Minyan",5000,true));
-        employees.add(new Employee("Maor@gmmail.com","123445","Maor","Minyan",5000,true));
-        employees.add(new Employee("Maor@gmmail.com","123445","Maor","Minyan",5000,true));
-        employees.add(new Employee("Maor@gmmail.com","123445","Maor","Minyan",5000,true));
-        employees.add(new Employee("Maor@gmmail.com","123445","Maor","Minyan",5000,true));
-        employees.add(new Employee("Maor@gmmail.com","123445","Maor","Minyan",5000,true));
-        employees.add(new Employee("Maor@gmmail.com","123445","Maor","Minyan",5000,true));
-        employees.add(new Employee("Maor@gmmail.com","123445","Maor","Minyan",5000,true));
-        employees.add(new Employee("Maor@gmmail.com","123445","Maor","Minyan",5000,true));
-        employees.add(new Employee("Maor@gmmail.com","123445","Maor","Minyan",5000,true));
-        employees.add(new Employee("Maor@gmmail.com","123445","Maor","Minyan",5000,true));
-        employees.add(new Employee("Maor@gmmail.com","123445","Maor","Minyan",5000,true));
-        employees.add(new Employee("Maor@gmmail.com","123445","Maor","Minyan",5000,true));
-        employees.add(new Employee("Maor@gmmail.com","123445","Maor","Minyan",5000,true));
-        employees.add(new Employee("Maor@gmmail.com","123445","Maor","Minyan",5000,true));
-        employees.add(new Employee("Maor@gmmail.com","123445","Maor","Minyan",5000,true));
-        employees.add(new Employee("Maor@gmmail.com","123445","Maor","Minyan",5000,true));
+        loadEmployeeList();
 
-        EmployeeAdapter employeeAdapter = new EmployeeAdapter(employees);
-        recyclerView.setAdapter(employeeAdapter);
 
         FloatingActionButton addNewEmployee = rootView.findViewById(R.id.addNewEmployee_fab);
         addNewEmployee.setOnClickListener(new View.OnClickListener() {
@@ -73,25 +49,37 @@ public class ManageEmployeeFragment extends Fragment{
                 if(callbackFragment!= null){
                     callbackFragment.changeFragment();
                 }
-
             }
         });
 
 
-      //  recyclerView.notifyAll();
-
         return rootView;
     }
-
 
     public void setCallbackFragment(CallbackFragment callbackFragment){
         this.callbackFragment = callbackFragment;
     }
 
-    public List<Employee> loadList(){
-        List<Employee> list =  viewModel.loadEmployees();
-        return list;
+    public void loadEmployeeList(){
+
+        viewModel.loadEmployees(new loadEmployeeList() {
+            @Override
+            public void setEmployeeList(List<Employee> employeeList) {
+                initEmployeeAdapter(employeeList);
+            }
+        });
+
     }
+
+    public void initEmployeeAdapter(List<Employee> employeeList){
+        EmployeeAdapter employeeAdapter = new EmployeeAdapter(employeeList);
+        recyclerView.setAdapter(employeeAdapter);
+    }
+
+    public interface loadEmployeeList{
+        void setEmployeeList(List<Employee> employeeList);
+    }
+
 
 
 }
