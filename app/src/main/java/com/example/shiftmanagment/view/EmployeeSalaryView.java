@@ -6,12 +6,15 @@ import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
 import com.example.shiftmanagment.R;
+import com.example.shiftmanagment.util.Shift;
 
 import java.util.Calendar;
+import java.util.List;
 
 public class EmployeeSalaryView extends AppCompatActivity {
 
@@ -24,6 +27,8 @@ public class EmployeeSalaryView extends AppCompatActivity {
 
         final TextView dateFrom = findViewById(R.id.text_date_from);
         final TextView toDate = findViewById(R.id.text_to_date);
+        Button btnGetShifts = findViewById(R.id.btn_salary_get);
+
 
         dateFrom.setInputType(InputType.TYPE_NULL);
         dateFrom.setOnClickListener(new View.OnClickListener() {
@@ -38,7 +43,7 @@ public class EmployeeSalaryView extends AppCompatActivity {
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                                dateFrom.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                                dateFrom.setText( year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
                             }
                         }, year, month, day);
                 picker.show();
@@ -58,13 +63,29 @@ public class EmployeeSalaryView extends AppCompatActivity {
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                                toDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                                toDate.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
                             }
                         }, year, month, day);
                 picker.show();
             }
         });
 
+        btnGetShifts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String from = dateFrom.getText().toString();
+                String to = toDate.getText().toString();
 
+
+
+            }
+        });
+
+
+
+    }
+
+    public interface Callback{
+        void onGetShitCallback(List<Shift> shifts);
     }
 }

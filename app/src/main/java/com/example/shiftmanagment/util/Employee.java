@@ -12,7 +12,6 @@ public class Employee {
     private String lastName;
     private double salary;
     private boolean Manager;
-    private DocumentReference shiftRef;
 //    private HashMap<String, String> currentWeekShifts;
 //    private HashMap<String, String> nextWeekShifts;
 
@@ -76,13 +75,6 @@ public class Employee {
         Manager = manager;
     }
 
-    public DocumentReference getRef() {
-        return shiftRef;
-    }
-
-    public void setRef(DocumentReference ref) {
-        this.shiftRef = ref;
-    }
 
     @Override
     public String toString() {

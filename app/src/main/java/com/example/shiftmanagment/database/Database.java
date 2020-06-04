@@ -52,7 +52,6 @@ public class Database {
                 if(task.isSuccessful()){
                     Log.d("onComplete","Arrive");
                     userID = mAuth.getCurrentUser().getUid();
-                    employee.setRef(db.collection("users").document(userID).collection("usersShit").document(userID));
                     DocumentReference documentReference = db.collection("users").document(userID);
                     documentReference.set(employee).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
