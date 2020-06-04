@@ -7,10 +7,10 @@ import com.example.shiftmanagment.view.EmployeeSalaryView;
 
 public class EmployeeSalaryViewModel extends ViewModel {
 
-    private Database database = Database.getInstance();
+    private Database db = Database.getInstance();
 
-    public void getShifts(EmployeeSalaryView.Callback callback){
-
+    public void getShifts(String fromDate, String toDate, EmployeeSalaryView.Callback callback){
+        db.getShiftByDate(fromDate, toDate, callback);
     }
 
 }

@@ -85,6 +85,8 @@ public class EmployeeViewShiftsView extends AppCompatActivity {
 
             }
         });
+
+
     }
 
     class EventDecorator implements DayViewDecorator{
@@ -106,5 +108,9 @@ public class EmployeeViewShiftsView extends AppCompatActivity {
         public void decorate(DayViewFacade view) {
             view.addSpan(new DotSpan(10, color));
         }
+    }
+
+    public interface Callback{
+        void onGetShiftsCallback(HashMap<String, Shift> shifts);
     }
 }

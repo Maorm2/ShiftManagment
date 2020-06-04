@@ -11,7 +11,9 @@ import com.example.shiftmanagment.util.Employee;
 import com.example.shiftmanagment.util.PoolUser;
 import com.example.shiftmanagment.util.Shift;
 import com.example.shiftmanagment.util.WeekShift;
+import com.example.shiftmanagment.view.EmployeeSalaryView;
 import com.example.shiftmanagment.view.EmployeeShiftView;
+import com.example.shiftmanagment.view.EmployeeViewShiftsView;
 import com.example.shiftmanagment.view.MainActivity;
 import com.example.shiftmanagment.view.ManageShiftsView;
 import com.example.shiftmanagment.viewmodel.EmployeeShiftViewModel;
@@ -19,6 +21,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.api.LogDescriptor;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
@@ -220,5 +223,26 @@ public class Database {
             }
         });*/
 
+    }
+
+    public void getShiftByDate(String fromDate, String toDate, final EmployeeSalaryView.Callback callback){
+        db.collection("users").document(mAuth.getUid()).collection("shifts").whereGreaterThanOrEqualTo("timeStamp", "04-06-2020").whereLessThanOrEqualTo("timeStamp", "14-06-2020").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                List<Shift> shifts = queryDocumentSnapshots.toObjects(Shift.class);
+                Log.d(TAG, "onSuccess: " + shifts.get(1).getTimeInDay());
+                callback.onGetShitCallback(shifts);
+            }
+        });
+    }
+
+    public void getShiftForCurrentWeek(final EmployeeViewShiftsView.Callback callback){
+        db.collection("users").document(mAuth.getUid()).collection("shifts").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                List<Shift> shifts = queryDocumentSnapshots.toObjects(Shift.class);
+//                callback.
+            }
+        });
     }
 }
