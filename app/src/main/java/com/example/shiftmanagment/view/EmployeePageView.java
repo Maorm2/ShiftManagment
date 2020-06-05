@@ -7,12 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.developer.kalert.KAlertDialog;
 import com.example.shiftmanagment.R;
 import com.example.shiftmanagment.viewmodel.EmployeePageViewModel;
 
 public class EmployeePageView extends AppCompatActivity {
 
     private EmployeePageViewModel viewModel = new EmployeePageViewModel();
+    private Boolean mShiftsPublished = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +26,7 @@ public class EmployeePageView extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 viewModel.signOut();
-                Intent intent = new Intent(EmployeePageView.this, MainActivity.class);
-                startActivity(intent);
-                finish();
+              moveToNewActivity(MainActivity.class);
             }
         });
 
@@ -34,8 +34,7 @@ public class EmployeePageView extends AppCompatActivity {
         btnMoveToMyShifts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(EmployeePageView.this, EmployeeShiftView.class);
-                startActivity(intent);
+                checkIfShiftsPublished();
             }
         });
 
@@ -43,8 +42,7 @@ public class EmployeePageView extends AppCompatActivity {
         btnMoveTOMySalary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(EmployeePageView.this, EmployeeSalaryView.class);
-                startActivity(intent);
+                moveToNewActivity(EmployeeSalaryView.class);
             }
         });
 
@@ -52,9 +50,38 @@ public class EmployeePageView extends AppCompatActivity {
         btnMoveToViewShifts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(EmployeePageView.this, EmployeeViewShiftsView.class);
-                startActivity(intent);
+               moveToNewActivity(EmployeeViewShiftsView.class);
             }
         });
+    }
+
+    private void checkIfShiftsPublished() {
+        viewModel.getPublishShifts(new ManageShiftsView.OnCallbackShifts() {
+            @Override
+            public void setPublishShifts(boolean isPublish) {
+                mShiftsPublished = isPublish;
+                if(!mShiftsPublished){
+                    moveToNewActivity(EmployeeShiftView.class);
+                }
+                else {
+                    createInfoDialog();
+                }
+            }
+        });
+
+    }
+
+    private void createInfoDialog(){
+        new KAlertDialog(this, KAlertDialog.WARNING_TYPE)
+                .setTitleText(getString(R.string.shifts_published_title))
+                .setContentText(getString(R.string.shifts_published_instructions))
+                .setConfirmText(getString(R.string.confirm_button))
+                .confirmButtonColor(R.color.colorPrimary)
+                .show();
+    }
+
+    private void moveToNewActivity (Class destActivity) {
+        Intent i = new Intent(this, destActivity);
+        startActivity(i);
     }
 }

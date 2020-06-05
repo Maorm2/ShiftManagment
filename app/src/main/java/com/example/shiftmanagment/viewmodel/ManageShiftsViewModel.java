@@ -28,4 +28,8 @@ public class ManageShiftsViewModel extends ViewModel {
     public void getPublishShifts(ManageShiftsView.OnCallbackShifts onCallbackShifts) {
         database.getPublishShifts(onCallbackShifts);
     }
+
+    public void clearShifts() {
+        database.clearShifts();
+    }
 }

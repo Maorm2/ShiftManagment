@@ -1,5 +1,6 @@
 package com.example.shiftmanagment.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.developer.kalert.KAlertDialog;
 import com.example.shiftmanagment.R;
 import com.example.shiftmanagment.viewmodel.EmployeeShiftViewModel;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
@@ -46,7 +48,7 @@ public class EmployeeShiftView extends AppCompatActivity implements View.OnClick
         bunAddShift.setOnClickListener(this);
         bunPlaceShifts.setOnClickListener(this);
 
-        viewModel.getPublishShifts(new ManageShiftsView.OnCallbackShifts() {
+     /*   viewModel.getPublishShifts(new ManageShiftsView.OnCallbackShifts() {
             @Override
             public void setPublishShifts(boolean isPublish) {
                 if(!isPublish){
@@ -54,7 +56,7 @@ public class EmployeeShiftView extends AppCompatActivity implements View.OnClick
                 }
 
             }
-        });
+        });*/
 
         LocalDate nextSunday = LocalDate.now().with(TemporalAdjusters.next(DayOfWeek.SUNDAY));
 
@@ -92,12 +94,28 @@ public class EmployeeShiftView extends AppCompatActivity implements View.OnClick
             viewModel.addWeekShiftToDb(new Callback() {
                 @Override
                 public void onSuccess() {
-                    Toast.makeText(getApplicationContext(), "Shifts have been sent to manager", Toast.LENGTH_LONG).show();
+                    successDialog();
                 }
             });
             break;
         }
 
+    }
+
+    private void successDialog() {
+        new KAlertDialog(this, KAlertDialog.SUCCESS_TYPE)
+                .setTitleText(getString(R.string.shifts_send_confirmation))
+                .setContentText(getString(R.string.shifts_send_confirmation_info))
+                .setConfirmText(getString(R.string.confirm_button))
+                .confirmButtonColor(R.color.colorPrimary)
+                .setConfirmClickListener(new KAlertDialog.KAlertClickListener() {
+                    @Override
+                    public void onClick(KAlertDialog kAlertDialog) {
+                        Intent intent = new Intent(EmployeeShiftView.this,EmployeePageView.class);
+                        startActivity(intent);
+                    }
+                })
+                .show();
     }
 
     public interface Callback{

@@ -19,4 +19,13 @@
     <string name="enter_employee_last_name">Enter employee last name</string>
     <string name="add_new_employee">Add new employee</string>
     <string name="create_a_new_employee">Create a new employee</string>
+    <string name="shifts_published_title">The shifts already published</string>
+    <string name="shifts_published_instructions">You can request shifts only before the manager is publish the shifts.</string>
+    <string name="confirm_button">ok</string>
+    <string name="shifts_published_success">Shifts published successfully</string>
+    <string name="shift_publish_succsses_info">Now the employees can not send request for shifts until you allow it.</string>
+    <string name="requests_shifts_allowed">The request shifts are allowed</string>
+    <string name="request_shifts_info">Now the employees can send requests for new shifts.</string>
+    <string name="shifts_send_confirmation">Shifts has been sent</string>
+    <string name="shifts_send_confirmation_info">Your shifts has been sent to manager for approval.</string>
 </resources>

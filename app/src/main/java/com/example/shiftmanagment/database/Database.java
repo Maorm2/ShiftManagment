@@ -270,4 +270,17 @@ public class Database {
             }
         });
     }
+
+    public void clearShifts() {
+        db.collection("pool").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                QuerySnapshot querySnapshots= task.getResult();
+                      List<DocumentSnapshot> documentSnapshots = querySnapshots.getDocuments();
+                      for( DocumentSnapshot documentSnapshot : documentSnapshots) {
+                          documentSnapshot.getReference().delete();
+                      }
+            }
+        });
+    }
 }

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.developer.kalert.KAlertDialog;
 import com.example.shiftmanagment.R;
 import com.example.shiftmanagment.adapter.EmployeeRequestsAdapter;
 import com.example.shiftmanagment.fragment.ManageEmployeeFragment;
@@ -54,12 +55,15 @@ public class ManageShiftsView<isShiftsPublished> extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(!isShiftsPublished) {
-                    publishShiftsBtn.setText("Lock Publish Shifts");
+                    publishShiftsBtn.setText("Unlock requests shifts");
                     isShiftsPublished = true;
+                    successDialog();
                 }
                 else {
-                    publishShiftsBtn.setText("Publish Shifts");
+                    publishShiftsBtn.setText("Publish shifts and Lock requests");
                     isShiftsPublished = false;
+                    viewModel.clearShifts();
+                    infoDialog();
                 }
                 viewModel.publishShifts(isShiftsPublished);
             }
@@ -73,6 +77,24 @@ public class ManageShiftsView<isShiftsPublished> extends AppCompatActivity {
 
         getRequestList();
 
+    }
+
+    private void infoDialog() {
+        new KAlertDialog(this, KAlertDialog.WARNING_TYPE)
+                .setTitleText(getString(R.string.requests_shifts_allowed))
+                .setContentText(getString(R.string.request_shifts_info))
+                .setConfirmText(getString(R.string.confirm_button))
+                .confirmButtonColor(R.color.colorPrimary)
+                .show();
+    }
+
+    private void successDialog() {
+        new KAlertDialog(this, KAlertDialog.SUCCESS_TYPE)
+                .setTitleText(getString(R.string.shifts_published_success))
+                .setContentText(getString(R.string.shift_publish_succsses_info))
+                .setConfirmText(getString(R.string.confirm_button))
+                .confirmButtonColor(R.color.colorPrimary)
+                .show();
     }
 
     public void getRequestList(){
