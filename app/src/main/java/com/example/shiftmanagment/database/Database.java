@@ -217,7 +217,7 @@ public class Database {
     }
 
     public void getShiftByDate(String fromDate, String toDate, final EmployeeSalaryView.Callback callback){
-        db.collection("users").document(mAuth.getUid()).collection("shifts").whereGreaterThanOrEqualTo("timeStamp", "04-06-2020").whereLessThanOrEqualTo("timeStamp", "14-06-2020").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        db.collection("users").document(mAuth.getUid()).collection("shifts").whereGreaterThanOrEqualTo("timeStamp", fromDate).whereLessThanOrEqualTo("timeStamp", toDate).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 List<Shift> shifts = queryDocumentSnapshots.toObjects(Shift.class);
@@ -227,14 +227,7 @@ public class Database {
         });
     }
 
-    public void getShiftForCurrentWeek(final EmployeeViewShiftsView.Callback callback){
-        db.collection("users").document(mAuth.getUid()).collection("shifts").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                List<Shift> shifts = queryDocumentSnapshots.toObjects(Shift.class);
-            }
-        });
-    }
+
 
     public void publishShifts(final boolean isShiftsPublished) {
         HashMap<String, Boolean> isPublish = new HashMap<>();
@@ -283,4 +276,5 @@ public class Database {
             }
         });
     }
+
 }

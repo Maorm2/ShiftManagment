@@ -3,6 +3,7 @@ package com.example.shiftmanagment.viewmodel;
 import androidx.lifecycle.ViewModel;
 
 import com.example.shiftmanagment.database.Database;
+import com.example.shiftmanagment.util.Employee;
 import com.example.shiftmanagment.view.EmployeeSalaryView;
 
 public class EmployeeSalaryViewModel extends ViewModel {
@@ -11,6 +12,10 @@ public class EmployeeSalaryViewModel extends ViewModel {
 
     public void getShifts(String fromDate, String toDate, EmployeeSalaryView.Callback callback){
         db.getShiftByDate(fromDate, toDate, callback);
+    }
+
+    public void getCurrentEmp(EmployeeShiftViewModel.OnDataRetrieve callback){
+        db.getCurrentEmpFromDb(callback);
     }
 
 }

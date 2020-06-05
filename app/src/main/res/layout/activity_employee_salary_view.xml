@@ -62,7 +62,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SHIFTS WILL BE HERE"
                 android:layout_marginBottom="20dp"
                 android:id="@+id/text_shifts_list"
                 android:textSize="12sp"
@@ -84,7 +83,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TOTAL MONEY WILL BE HERE"
                     android:id="@+id/text_total_money"
                     android:textSize="17sp"
                     android:textColor="@android:color/black"/>
