@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -41,7 +42,7 @@ public class EmployeeShiftsAdapter extends RecyclerView.Adapter<EmployeeShiftsAd
 
         TextView shiftRequestTv;
         CheckBox approveShiftCb;
-        //LinearLayout shiftsApproved;
+        ImageView shiftIv;
 
 
         public EmployeeShiftsViewHolder(@NonNull View itemView) {
@@ -49,6 +50,7 @@ public class EmployeeShiftsAdapter extends RecyclerView.Adapter<EmployeeShiftsAd
 
             shiftRequestTv = itemView.findViewById(R.id.shift_request_date);
             approveShiftCb = itemView.findViewById(R.id.shift_request_cb);
+            shiftIv = itemView.findViewById(R.id.shift_image);
 
             approveShiftCb.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -75,12 +77,31 @@ public class EmployeeShiftsAdapter extends RecyclerView.Adapter<EmployeeShiftsAd
     public void onBindViewHolder(@NonNull EmployeeShiftsViewHolder holder, int position) {
 
         String date = dates.get(position);
-        holder.shiftRequestTv.setText(weekShifts.getShifts().get(date) +": " +date );
+        String shift = weekShifts.getShifts().get(date);
+        holder.shiftRequestTv.setText(date + ": "+shift);
+        holder.shiftIv.setImageResource(setImageView(shift));
     }
 
     @Override
     public int getItemCount() {
         return dates.size();
+    }
+    
+    private int setImageView(String shift){
+        int shiftRequest = 0;
+        switch(shift){
+            case "Evening":
+                shiftRequest = R.drawable.evening_icon;
+                break;
+            case "Night":
+                shiftRequest = R.drawable.night_icon;
+                break;
+            case "Morning":
+                shiftRequest = R.drawable.morning_icon;
+                break;
+        }
+        
+        return shiftRequest;
     }
 
 

@@ -52,7 +52,7 @@ public class AdminPageView extends AppCompatActivity implements CallbackFragment
             @Override
             public void onClick(View v) {
                 btnMoveToMngEmployee.setBackgroundResource(R.drawable.button_style);
-               addFragment();
+                addFragment();
             }
         });
 
@@ -89,15 +89,4 @@ public class AdminPageView extends AppCompatActivity implements CallbackFragment
         replaceFragment();
     }
 
-
-    @Override
-    public void onBackPressed() {
-
-        if(fragmentManager.getBackStackEntryCount() == 0){
-
-        }
-
-        super.onBackPressed();
-
-    }
 }

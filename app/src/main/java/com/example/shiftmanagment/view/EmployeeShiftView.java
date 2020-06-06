@@ -115,8 +115,7 @@ public class EmployeeShiftView extends AppCompatActivity implements View.OnClick
                 .setConfirmClickListener(new KAlertDialog.KAlertClickListener() {
                     @Override
                     public void onClick(KAlertDialog kAlertDialog) {
-                        Intent intent = new Intent(EmployeeShiftView.this,EmployeePageView.class);
-                        startActivity(intent);
+                        finish();
                     }
                 })
                 .show();

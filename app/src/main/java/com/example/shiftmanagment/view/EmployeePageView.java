@@ -27,6 +27,7 @@ public class EmployeePageView extends AppCompatActivity {
             public void onClick(View v) {
                 viewModel.signOut();
               moveToNewActivity(MainActivity.class);
+
             }
         });
 
@@ -62,6 +63,7 @@ public class EmployeePageView extends AppCompatActivity {
                 mShiftsPublished = isPublish;
                 if(!mShiftsPublished){
                     moveToNewActivity(EmployeeShiftView.class);
+
                 }
                 else {
                     createInfoDialog();
@@ -83,5 +85,7 @@ public class EmployeePageView extends AppCompatActivity {
     private void moveToNewActivity (Class destActivity) {
         Intent i = new Intent(this, destActivity);
         startActivity(i);
+
     }
+
 }
