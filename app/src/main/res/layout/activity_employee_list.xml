@@ -31,6 +31,8 @@
             android:layout_gravity="bottom"
             android:layout_margin="40dp"
             android:contentDescription="submit"
+            app:backgroundTint="@color/colorPrimaryDark"
+            app:rippleColor="@color/colorPrimaryDark"
             android:src="@drawable/plus_icon" />
     </LinearLayout>
     </RelativeLayout>

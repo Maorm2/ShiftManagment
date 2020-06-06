@@ -28,4 +28,9 @@
     <string name="request_shifts_info">Now the employees can send requests for new shifts.</string>
     <string name="shifts_send_confirmation">Shifts has been sent</string>
     <string name="shifts_send_confirmation_info">Your shifts has been sent to manager for approval.</string>
+    <string name="alert_permission_dialog_title">Prmission is required</string>
+    <string name="alert_permission_dialog_context">You must get a permission to add the shifts to your diary.</string>
+    <string name="no_button">No, thanks</string>
+    <string name="sucess_inserted_calendar_title">The operation succeed</string>
+    <string name="sucess_inserted_calendar_context">Your shifts has been added to the google calendar.</string>
 </resources>
