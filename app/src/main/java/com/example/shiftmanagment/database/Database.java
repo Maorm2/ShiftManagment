@@ -217,7 +217,8 @@ public class Database {
     }
 
     public void getShiftByDate(String fromDate, String toDate, final EmployeeSalaryView.Callback callback){
-        db.collection("users").document(mAuth.getUid()).collection("shifts").whereGreaterThanOrEqualTo("timeStamp", fromDate).whereLessThanOrEqualTo("timeStamp", toDate).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        db.collection("users").document(mAuth.getUid()).collection("shifts")
+                .whereGreaterThanOrEqualTo("timeStamp", fromDate).whereLessThanOrEqualTo("timeStamp", toDate).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 List<Shift> shifts = queryDocumentSnapshots.toObjects(Shift.class);
@@ -265,6 +266,7 @@ public class Database {
     }
 
     public void clearShifts() {
+        QueryDocumentSnapshot queryDocumentSnapshot;
         db.collection("pool").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
