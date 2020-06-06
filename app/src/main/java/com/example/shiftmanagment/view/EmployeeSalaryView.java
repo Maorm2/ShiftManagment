@@ -25,6 +25,7 @@ public class EmployeeSalaryView extends AppCompatActivity {
     private EmployeeSalaryViewModel viewModel;
     private TextView textViewShiftsList;
     private TextView textViewTotalMoney;
+    private TextView textViewEmpName;
     private Employee employee;
 
 
@@ -49,6 +50,8 @@ public class EmployeeSalaryView extends AppCompatActivity {
         Button btnGetShifts = findViewById(R.id.btn_salary_get);
         textViewShiftsList = findViewById(R.id.text_shifts_list);
         textViewTotalMoney = findViewById(R.id.text_total_money);
+        textViewEmpName = findViewById(R.id.text_employee_full_name);
+
 
 
         dateFrom.setInputType(InputType.TYPE_NULL);
@@ -113,6 +116,7 @@ public class EmployeeSalaryView extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 textViewShiftsList.setText("");
+                textViewEmpName.setText(employee.getFirstName() + " " + employee.getLastName());
                 String from = dateFrom.getText().toString();
                 String to = toDate.getText().toString();
 
