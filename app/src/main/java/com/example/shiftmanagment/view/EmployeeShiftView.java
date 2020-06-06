@@ -92,6 +92,7 @@ public class EmployeeShiftView extends AppCompatActivity implements View.OnClick
                 break;
             case R.id.btn_add_shift:
                 viewModel.addShiftToWeek(shiftDate.toString(), shiftTime);
+                Toast.makeText(this, "Shift added", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_place_shifts:
             viewModel.addWeekShiftToDb(new Callback() {
