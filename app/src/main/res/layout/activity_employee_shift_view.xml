@@ -18,7 +18,7 @@
             android:text="Choose your shifts for next week:"
             android:layout_marginLeft="7dp"
             android:textColor="@color/colorstyle3"
-            android:textSize="18sp"/>
+            android:textSize="20sp"/>
 
     </RelativeLayout>
 
