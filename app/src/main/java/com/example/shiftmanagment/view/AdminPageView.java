@@ -2,6 +2,7 @@ package com.example.shiftmanagment.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -18,6 +19,7 @@ import com.example.shiftmanagment.viewmodel.AdminPageViewModel;
 
 public class AdminPageView extends AppCompatActivity implements CallbackFragment {
 
+    private static final String TAG = "";
     Fragment fragment;
     FragmentManager fragmentManager;
     FragmentTransaction transaction;
@@ -28,6 +30,8 @@ public class AdminPageView extends AppCompatActivity implements CallbackFragment
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_page_view);
+
+
 
 
         Button btnSignOut = findViewById(R.id.logOutAdminBtn);
@@ -60,22 +64,21 @@ public class AdminPageView extends AppCompatActivity implements CallbackFragment
     }
 
     public void addFragment(){
-        setContentView(R.layout.add_employee_base_fragment);
         ManageEmployeeFragment fragment = new ManageEmployeeFragment();
         fragment.setCallbackFragment(this);
         fragmentManager = getSupportFragmentManager();
         transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.fragmentContainer,fragment);
+        transaction.addToBackStack(null);
+        transaction.add(R.id.fragment_base_container,fragment);
         transaction.commit();
     }
 
     public void replaceFragment(){
         fragment = new NewEmployeeFragment();
-        fragmentManager = getSupportFragmentManager();
         transaction = fragmentManager.beginTransaction();
-        transaction.addToBackStack(null);
-        transaction.replace(R.id.fragmentContainer,fragment);
-        transaction.commit();
+        transaction.addToBackStack(null)
+        .replace(R.id.fragment_base_container,fragment)
+        .commit();
     }
 
     @Override
@@ -83,4 +86,15 @@ public class AdminPageView extends AppCompatActivity implements CallbackFragment
         replaceFragment();
     }
 
+
+    @Override
+    public void onBackPressed() {
+
+        if(fragmentManager.getBackStackEntryCount() == 0){
+
+        }
+
+        super.onBackPressed();
+
+    }
 }
