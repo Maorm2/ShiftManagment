@@ -33,6 +33,7 @@
         android:layout_height="0dp"
         app:mcv_showOtherDates="all"
         app:mcv_selectionColor="#00F"
+        android:background="@drawable/back_ground"
         />
 
     <RelativeLayout
@@ -59,16 +60,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Date:"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp"/>
+                    android:textColor="@color/colorstyle3"
+                    android:textSize="20sp" />
 
                 <TextView
+                    android:id="@+id/shift_view_text_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/shift_view_text_date"
                     android:layout_marginLeft="7dp"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp"/>
+                    android:textColor="@color/colorstyle3"
+                    android:textSize="20sp" />
 
 
             </LinearLayout>
@@ -83,7 +84,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Time in day:"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/colorstyle3"
                     android:textSize="20sp"/>
 
                 <TextView
@@ -91,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/shift_view_text_time"
                     android:layout_marginLeft="7dp"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/colorstyle3"
                     android:textSize="20sp"/>
 
 
@@ -105,7 +106,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Duration:"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/colorstyle3"
                     android:textSize="20sp"/>
 
                 <TextView
@@ -114,19 +115,14 @@
                     android:id="@+id/shift_view_text_duration"
                     android:text="8 Hours"
                     android:layout_marginLeft="7dp"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/colorstyle3"
                     android:textSize="20sp"/>
 
 
             </LinearLayout>
 
-
-
-
         </LinearLayout>
 
     </RelativeLayout>
-
-
 
 </LinearLayout>

@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/colorstyle3"
             android:text="@string/create_a_new_employee"
-            android:textSize="30dp"
+            android:textSize="28dp"
             android:gravity="center"
             android:textStyle="bold"
             android:layout_marginTop="60dp"/>
@@ -62,9 +62,10 @@
             android:maxLines="1"
             android:singleLine="true"
             android:textSize="25dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:layout_marginTop="18dp"/>
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="18dp"
+            android:gravity="center"/>
 
         <EditText
             android:id="@+id/employee_last_name_Et"
@@ -74,9 +75,10 @@
             android:maxLines="1"
             android:singleLine="true"
             android:textSize="25dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:layout_marginTop="18dp"/>
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="18dp"
+            android:gravity="center"/>
 
         <EditText
             android:id="@+id/employee_mail_Et"
@@ -86,9 +88,10 @@
             android:maxLines="1"
             android:singleLine="true"
             android:textSize="25dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:layout_marginTop="18dp"/>
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="18dp"
+            android:gravity="center"/>
 
         <EditText
             android:id="@+id/employee_password_Et"
@@ -98,9 +101,10 @@
             android:maxLines="1"
             android:singleLine="true"
             android:textSize="25dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:layout_marginTop="18dp"/>
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="18dp"
+            android:gravity="center"/>
 
         <EditText
             android:id="@+id/salary_per_hour_employee_Et"
@@ -110,9 +114,10 @@
             android:maxLines="1"
             android:singleLine="true"
             android:textSize="25dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:layout_marginTop="18dp"/>
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="18dp"
+            android:gravity="center"/>
 
         <CheckBox
             android:id="@+id/isAdmin_Cb"

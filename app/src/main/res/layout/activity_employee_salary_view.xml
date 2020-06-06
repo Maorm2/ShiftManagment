@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.EmployeeSalaryView">
+    tools:context=".view.EmployeeSalaryView"
+    android:background="@drawable/back_salary">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,7 +19,8 @@
             android:layout_height="wrap_content"
             android:text="Your Salary"
             android:textSize="20sp"
-            android:textColor="@android:color/black"/>
+            android:textColor="@color/colorstyle3"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
@@ -109,7 +111,8 @@
             android:layout_height="wrap_content"
             android:text="Pick dates to show:"
             android:layout_marginBottom="10dp"
-            android:textColor="@android:color/black"/>
+            android:textColor="@color/colorstyle3"
+            android:textStyle="bold"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -122,7 +125,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/text_date_from"
                 android:layout_marginRight="20dp"
-                android:hint="from date"/>
+                android:hint="from date"
+                android:textColor="@color/colorstyle3"/>
 
             <EditText
                 android:id="@+id/text_to_date"
@@ -130,7 +134,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="22dp"
                 android:layout_toRightOf="@id/text_date_from"
-                android:hint="to_date" />
+                android:hint="to_date"
+                android:textColor="@color/colorstyle3"/>
 
         </RelativeLayout>
 
@@ -138,7 +143,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btn_salary_get"
-            android:text="Get shifts"/>
+            android:text="Get shifts"
+            android:background="@drawable/blue_button"/>
 
     </LinearLayout>
 

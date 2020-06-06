@@ -9,7 +9,7 @@
         android:icon="@drawable/hmn"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
+        android:supportsRtl="false"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".view.EmployeeViewShiftsView"></activity>
         <activity android:name=".view.SplashScreen">
