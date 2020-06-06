@@ -18,23 +18,31 @@
             android:layout_height="wrap_content"
             android:text="Your weekly shifts:"
             android:layout_marginLeft="7dp"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"/>
+            android:textColor="@color/colorstyle3"
+            android:textSize="30sp" />
 
     </RelativeLayout>
 
 
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_weight="5"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
 
     <com.prolificinteractive.materialcalendarview.MaterialCalendarView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/emp_view_shifts_calendarView"
-        android:layout_weight="9"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         app:mcv_showOtherDates="all"
-        app:mcv_selectionColor="#00F"
-        android:background="@drawable/back_ground"
-        />
+        app:mcv_selectionColor="@color/colorstyle3"/>
+
+    </androidx.cardview.widget.CardView>
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -135,11 +143,17 @@
         android:gravity="center">
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/btn_add_my_calendar"
-            android:text="Add to my calendar"/>
-
+            android:text="Add to my calendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:textColor="@android:color/black"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:layout_margin="40dp"
+            android:background="@drawable/blue_button"
+            android:textAllCaps="false"/>
     </RelativeLayout>
 
 
