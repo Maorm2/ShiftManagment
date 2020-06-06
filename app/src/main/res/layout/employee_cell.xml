@@ -3,11 +3,14 @@
 <androidx.cardview.widget.CardView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#fff"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardUseCompatPadding="true"
     app:contentPadding="10dp"
-    app:cardElevation="10dp"
+    app:cardElevation="5dp"
+
     app:cardCornerRadius="10dp"
+
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 
@@ -30,18 +33,35 @@
             android:layout_height="wrap_content"
             android:text="name"
             android:layout_gravity="left"
-            android:textSize="20sp"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
             android:id="@+id/employee_fullName"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Salary"
+            android:layout_marginLeft="10dp"
+            android:text="Email"
             android:layout_gravity="left"
             android:layout_marginRight="20dp"
             android:textSize="15sp"
             android:layout_marginTop="20dp"
-            android:id="@+id/employee_salary"/>
+            android:textStyle="bold"
+            android:id="@+id/employee_mail_cardview"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Salary"
+            android:layout_gravity="left"
+            android:layout_marginRight="20dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/employee_salary_cardview"/>
 </LinearLayout>
 </androidx.cardview.widget.CardView>

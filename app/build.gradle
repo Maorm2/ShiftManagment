@@ -45,7 +45,7 @@ dependencies {
     implementation 'com.jakewharton.threetenabp:threetenabp:1.2.0'
 
     // Design Library
-    implementation 'com.github.TutorialsAndroid:KAlertDialog:v11.0.19'
+    implementation 'com.github.TutorialsAndroid:KAlertDialog:v4.0.19'
 
     implementation 'com.github.prolificinteractive:material-calendarview:2.0.1'
     implementation 'androidx.appcompat:appcompat:1.1.0'

@@ -75,7 +75,7 @@ public class EmployeeShiftsAdapter extends RecyclerView.Adapter<EmployeeShiftsAd
     public void onBindViewHolder(@NonNull EmployeeShiftsViewHolder holder, int position) {
 
         String date = dates.get(position);
-        holder.shiftRequestTv.setText(weekShifts.getShifts().get(date) +" :" +date );
+        holder.shiftRequestTv.setText(weekShifts.getShifts().get(date) +": " +date );
     }
 
     @Override

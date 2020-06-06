@@ -29,6 +29,7 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.Employ
     public class EmployeeViewHolder extends RecyclerView.ViewHolder{
 
         TextView nameTv;
+        TextView emailTv;
         TextView salaryTv;
         ImageView employeeImage;
 
@@ -36,7 +37,8 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.Employ
             super(itemView);
 
             nameTv = itemView.findViewById(R.id.employee_fullName);
-            salaryTv = itemView.findViewById(R.id.employee_salary);
+            emailTv = itemView.findViewById(R.id.employee_mail_cardview);
+            salaryTv = itemView.findViewById(R.id.employee_salary_cardview);
             employeeImage = itemView.findViewById(R.id.employee_image);
 
             circleImage(itemView,employeeImage);
@@ -56,8 +58,8 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.Employ
     public void onBindViewHolder(@NonNull EmployeeViewHolder holder, int position) {
         Employee employee = employees.get(position);
         holder.nameTv.setText(employee.getFirstName()+ " " + employee.getLastName());
-        holder.salaryTv.setText(employee.getSalary()+"$");
-
+        holder.emailTv.setText(employee.getEmail());
+        holder.salaryTv.setText(employee.getSalary()+"$ per hour");
     }
 
     @Override

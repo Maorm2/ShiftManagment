@@ -33,4 +33,5 @@
     <string name="no_button">No, thanks</string>
     <string name="sucess_inserted_calendar_title">The operation succeed</string>
     <string name="sucess_inserted_calendar_context">Your shifts has been added to the google calendar.</string>
+    <string name="salary_per_hour">per hour</string>
 </resources>

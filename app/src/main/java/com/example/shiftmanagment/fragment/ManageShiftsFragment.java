@@ -1,6 +1,8 @@
 package com.example.shiftmanagment.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +15,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.developer.kalert.KAlertDialog;
 import com.example.shiftmanagment.R;
 import com.example.shiftmanagment.adapter.EmployeeShiftsAdapter;
 import com.example.shiftmanagment.util.Employee;
 import com.example.shiftmanagment.util.PoolUser;
+import com.example.shiftmanagment.view.AdminPageView;
 import com.example.shiftmanagment.view.ManageShiftsView;
 import com.example.shiftmanagment.viewmodel.ManageShiftsViewModel;
 
@@ -48,6 +52,7 @@ public class ManageShiftsFragment extends Fragment {
             public void onClick(View v) {
                 try {
                     viewModel.shiftsApproved(shifts,user);
+                    successDialog();
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -65,6 +70,22 @@ public class ManageShiftsFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         return view;
+    }
+
+
+    private void successDialog() {
+        new KAlertDialog(getContext(), KAlertDialog.SUCCESS_TYPE)
+                .setConfirmText(getString(R.string.confirm_button))
+                .confirmButtonColor(R.color.colorPrimary)
+                .setConfirmClickListener(new KAlertDialog.KAlertClickListener() {
+                    @Override
+                    public void onClick(KAlertDialog kAlertDialog) {
+                        Intent intent = new Intent(getContext(), ManageShiftsView.class);
+                        startActivity(intent);
+                        getActivity().finish();
+                    }
+                })
+                .show();
     }
 
     @Override

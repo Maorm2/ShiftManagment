@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.developer.kalert.KAlertDialog;
 import com.example.shiftmanagment.R;
 import com.example.shiftmanagment.fragment.CallbackFragment;
 import com.example.shiftmanagment.fragment.ManageEmployeeFragment;
@@ -23,6 +24,7 @@ public class AdminPageView extends AppCompatActivity implements CallbackFragment
     Fragment fragment;
     FragmentManager fragmentManager;
     FragmentTransaction transaction;
+    KAlertDialog pDialog;
 
     private AdminPageViewModel viewModel = new AdminPageViewModel();
 
