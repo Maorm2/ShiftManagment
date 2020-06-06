@@ -1,5 +1,9 @@
 package com.example.shiftmanagment.viewmodel;
 
+import android.content.pm.PackageManager;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModel;
 
 import com.example.shiftmanagment.database.Database;
@@ -32,4 +36,6 @@ public class ManageShiftsViewModel extends ViewModel {
     public void clearShifts() {
         database.clearShifts();
     }
+
+
 }

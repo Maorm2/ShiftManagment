@@ -114,11 +114,11 @@ public class ManageShiftsView<isShiftsPublished> extends AppCompatActivity {
         adapter.setListener(new EmployeeRequestsAdapter.RequestListener() {
             @Override
             public void onClick(PoolUser user) {
-                setContentView(R.layout.employee_requests_fragment);
                 ManageShiftsFragment fragment = new ManageShiftsFragment(user);
                 fragmentManager = getSupportFragmentManager();
                 transaction = fragmentManager.beginTransaction();
-                transaction.add(R.id.fragmentContainer,fragment);
+                transaction.addToBackStack(null);
+                transaction.add(R.id.request_list_fragment,fragment);
                 transaction.commit();
             }
         });

@@ -43,6 +43,7 @@ public class ManageEmployeeFragment extends Fragment{
 
 
         FloatingActionButton addNewEmployee = rootView.findViewById(R.id.addNewEmployee_fab);
+        addNewEmployee.setColorFilter(getResources().getColor(R.color.colorPrimary));
         addNewEmployee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
