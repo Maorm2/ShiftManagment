@@ -1,22 +1,22 @@
 package com.example.shiftmanagment.view;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
-
+import android.widget.RadioButton;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.widget.RadioGroup;
 import com.developer.kalert.KAlertDialog;
 import com.example.shiftmanagment.R;
 import com.example.shiftmanagment.viewmodel.EmployeeShiftViewModel;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
-import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
-
+import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;;
+import android.content.Intent;
 import org.threeten.bp.DayOfWeek;
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.temporal.TemporalAdjusters;
@@ -26,6 +26,9 @@ public class EmployeeShiftView extends AppCompatActivity implements View.OnClick
     private String shiftTime;
     private LocalDate shiftDate;
     private EmployeeShiftViewModel viewModel;
+    private RadioButton morningShift;
+    private RadioButton eveningShift;
+    private RadioButton nightShift;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +37,9 @@ public class EmployeeShiftView extends AppCompatActivity implements View.OnClick
 
         viewModel = new EmployeeShiftViewModel();
 
-        ImageButton morningShift = findViewById(R.id.img_btn_morning);
-        ImageButton eveningShift = findViewById(R.id.img_btn_evening);
-        ImageButton nightShift = findViewById(R.id.img_btn_night);
+        morningShift = findViewById(R.id.img_btn_morning);
+        eveningShift = findViewById(R.id.img_btn_evening);
+        nightShift = findViewById(R.id.img_btn_night);
 
         Button bunAddShift = findViewById(R.id.btn_add_shift);
         Button bunPlaceShifts = findViewById(R.id.btn_place_shifts);
@@ -77,7 +80,7 @@ public class EmployeeShiftView extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.img_btn_morning:
                 shiftTime = "Morning";
                 break;
@@ -89,6 +92,7 @@ public class EmployeeShiftView extends AppCompatActivity implements View.OnClick
                 break;
             case R.id.btn_add_shift:
                 viewModel.addShiftToWeek(shiftDate.toString(), shiftTime);
+                Toast.makeText(this, "Shift added", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_place_shifts:
             viewModel.addWeekShiftToDb(new Callback() {
@@ -118,7 +122,8 @@ public class EmployeeShiftView extends AppCompatActivity implements View.OnClick
                 .show();
     }
 
-    public interface Callback{
+
+    public interface Callback {
         void onSuccess();
     }
 

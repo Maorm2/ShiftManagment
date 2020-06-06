@@ -47,10 +47,11 @@ public class AdminPageView extends AppCompatActivity implements CallbackFragment
             }
         });
 
-        Button btnMoveToMngEmployee = findViewById(R.id.manageEmployeesBtn);
+       final Button btnMoveToMngEmployee = findViewById(R.id.manageEmployeesBtn);
         btnMoveToMngEmployee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                btnMoveToMngEmployee.setBackgroundResource(R.drawable.button_style);
                addFragment();
             }
         });

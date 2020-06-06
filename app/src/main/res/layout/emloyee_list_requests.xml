@@ -29,6 +29,8 @@
         android:layout_marginRight="25dp"
         android:layout_marginLeft="25dp"
         android:text="Publish Shifts"
+        android:layout_margin="40dp"
+        android:background="@drawable/blue_button"
         android:textAllCaps="false"
         android:id="@+id/publish_shifts_btn"
         />
