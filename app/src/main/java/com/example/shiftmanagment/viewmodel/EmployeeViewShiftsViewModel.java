@@ -8,7 +8,7 @@ public class EmployeeViewShiftsViewModel {
 
     Database db = Database.getInstance();
 
-    public void getShiftsForCurrentWeek(String from, String to, EmployeeSalaryView.Callback callback){
-
+    public void getShiftsForCurrentWeek(String from, String to, EmployeeViewShiftsView.Callback callback){
+            db.getHashMapShiftByDate(from, to, callback);
     }
 }

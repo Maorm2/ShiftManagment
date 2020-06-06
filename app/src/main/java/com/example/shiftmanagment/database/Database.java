@@ -220,9 +220,34 @@ public class Database {
         db.collection("users").document(mAuth.getUid()).collection("shifts").whereGreaterThanOrEqualTo("timeStamp", fromDate).whereLessThanOrEqualTo("timeStamp", toDate).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                Log.d("TAG", "onSuccess: good");
                 List<Shift> shifts = queryDocumentSnapshots.toObjects(Shift.class);
-                Log.d(TAG, "onSuccess: " + shifts.get(1).getTimeInDay());
+                Log.d("TAG", "onSuccess: " + shifts.get(1).getTimeInDay());
                 callback.onGetShitCallback(shifts);
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("TAG", "onFailure: fail");
+            }
+        });
+    }
+
+    public void getHashMapShiftByDate(String fromDate, String toDate, final EmployeeViewShiftsView.Callback callback){
+        db.collection("users").document(mAuth.getUid()).collection("shifts").whereGreaterThanOrEqualTo("timeStamp", fromDate).whereLessThanOrEqualTo("timeStamp", toDate).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                HashMap<String, String> shifts = new HashMap<>();
+
+                QuerySnapshot querySnapshot = task.getResult();
+                List<DocumentSnapshot> snapshots = querySnapshot.getDocuments();
+                for(DocumentSnapshot documentSnapshot : snapshots){
+                    String date = documentSnapshot.get("date").toString();
+                    String timeInDay = documentSnapshot.get("timeInDay").toString();
+                    shifts.put(date, timeInDay);
+                }
+                callback.onCallback(shifts);
             }
         });
     }
