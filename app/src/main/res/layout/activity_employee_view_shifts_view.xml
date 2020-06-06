@@ -121,8 +121,27 @@
 
             </LinearLayout>
 
+
+
+
         </LinearLayout>
 
     </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_add_my_calendar"
+            android:text="Add to my calendar"/>
+
+    </RelativeLayout>
+
+
 
 </LinearLayout>
