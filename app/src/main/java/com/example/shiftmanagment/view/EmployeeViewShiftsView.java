@@ -202,7 +202,7 @@ public class EmployeeViewShiftsView extends AppCompatActivity {
         new KAlertDialog(this, KAlertDialog.SUCCESS_TYPE)
                 .setTitleText(getString(R.string.sucess_inserted_calendar_title))
                 .setContentText(getString(R.string.sucess_inserted_calendar_context))
-                .confirmButtonColor(R.color.colorPrimary)
+                .confirmButtonColor(R.color.colorPrimaryDark)
                 .setConfirmText(getString(R.string.dialog_ok))
                  .setConfirmClickListener(new KAlertDialog.KAlertClickListener() {
                      @Override
@@ -266,12 +266,13 @@ public class EmployeeViewShiftsView extends AppCompatActivity {
                 dialog.setTitleText(getString(R.string.alert_permission_dialog_title))
                 .setContentText(getString(R.string.alert_permission_dialog_context))
                 .setConfirmText(getString(R.string.confirm_button))
-                .confirmButtonColor(R.color.colorPrimary)
+                .confirmButtonColor(R.color.colorPrimaryDark)
                 .setConfirmClickListener(new KAlertDialog.KAlertClickListener() {
                     @Override
                     public void onClick(KAlertDialog kAlertDialog) {
-                        Intent enableCalendarIntent = new Intent(Settings.ACTION_SETTINGS);
-                        startActivityForResult(enableCalendarIntent, PERMISSION_REQUEST_WRITE_CALENDAR);
+                        Intent intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                        intent.setData(Uri.parse("package:" + getPackageName()));
+                        startActivity(intent);
                         dialog.cancel();
                     }
                 })

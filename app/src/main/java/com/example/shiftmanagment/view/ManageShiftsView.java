@@ -84,7 +84,7 @@ public class ManageShiftsView<isShiftsPublished> extends AppCompatActivity {
                 .setTitleText(getString(R.string.requests_shifts_allowed))
                 .setContentText(getString(R.string.request_shifts_info))
                 .setConfirmText(getString(R.string.confirm_button))
-                .confirmButtonColor(R.color.colorPrimary)
+                .confirmButtonColor(R.color.colorPrimaryDark)
                 .show();
     }
 
@@ -93,7 +93,7 @@ public class ManageShiftsView<isShiftsPublished> extends AppCompatActivity {
                 .setTitleText(getString(R.string.shifts_published_success))
                 .setContentText(getString(R.string.shift_publish_succsses_info))
                 .setConfirmText(getString(R.string.confirm_button))
-                .confirmButtonColor(R.color.colorPrimary)
+                .confirmButtonColor(R.color.colorPrimaryDark)
                 .show();
     }
 

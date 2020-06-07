@@ -20,11 +20,9 @@ import com.example.shiftmanagment.viewmodel.AdminPageViewModel;
 
 public class AdminPageView extends AppCompatActivity implements CallbackFragment {
 
-    private static final String TAG = "";
     Fragment fragment;
     FragmentManager fragmentManager;
     FragmentTransaction transaction;
-    KAlertDialog pDialog;
 
     private AdminPageViewModel viewModel = new AdminPageViewModel();
 
@@ -32,10 +30,7 @@ public class AdminPageView extends AppCompatActivity implements CallbackFragment
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_page_view);
-
-
-
-
+        
         Button btnSignOut = findViewById(R.id.logOutAdminBtn);
         btnSignOut.setOnClickListener(new View.OnClickListener() {
             @Override

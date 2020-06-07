@@ -76,7 +76,7 @@ public class ManageShiftsFragment extends Fragment {
     private void successDialog() {
         new KAlertDialog(getContext(), KAlertDialog.SUCCESS_TYPE)
                 .setConfirmText(getString(R.string.confirm_button))
-                .confirmButtonColor(R.color.colorPrimary)
+                .confirmButtonColor(R.color.colorPrimaryDark)
                 .setConfirmClickListener(new KAlertDialog.KAlertClickListener() {
                     @Override
                     public void onClick(KAlertDialog kAlertDialog) {

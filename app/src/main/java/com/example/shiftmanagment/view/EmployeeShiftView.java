@@ -111,7 +111,7 @@ public class EmployeeShiftView extends AppCompatActivity implements View.OnClick
                 .setTitleText(getString(R.string.shifts_send_confirmation))
                 .setContentText(getString(R.string.shifts_send_confirmation_info))
                 .setConfirmText(getString(R.string.confirm_button))
-                .confirmButtonColor(R.color.colorPrimary)
+                .confirmButtonColor(R.color.colorPrimaryDark)
                 .setConfirmClickListener(new KAlertDialog.KAlertClickListener() {
                     @Override
                     public void onClick(KAlertDialog kAlertDialog) {

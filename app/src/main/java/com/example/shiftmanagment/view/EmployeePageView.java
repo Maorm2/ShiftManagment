@@ -78,7 +78,7 @@ public class EmployeePageView extends AppCompatActivity {
                 .setTitleText(getString(R.string.shifts_published_title))
                 .setContentText(getString(R.string.shifts_published_instructions))
                 .setConfirmText(getString(R.string.confirm_button))
-                .confirmButtonColor(R.color.colorPrimary)
+                .confirmButtonColor(R.color.colorPrimaryDark)
                 .show();
     }
 
