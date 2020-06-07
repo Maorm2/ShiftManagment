@@ -65,7 +65,7 @@ public class EmployeeShiftView extends AppCompatActivity implements View.OnClick
 
         MaterialCalendarView materialCalendarView = findViewById(R.id.calendarView);
         materialCalendarView.state().edit().setMinimumDate(nextSunday)
-                .setMaximumDate(CalendarDay.from(nextSunday.plusDays(7))).commit();
+                .setMaximumDate(CalendarDay.from(nextSunday.plusDays(6))).commit();
 
 
         materialCalendarView.setOnDateChangedListener(new OnDateSelectedListener() {

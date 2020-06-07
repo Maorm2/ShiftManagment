@@ -139,7 +139,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:gravity="center">
 
         <Button
@@ -151,7 +151,8 @@
             android:textColor="@android:color/black"
             android:paddingTop="14dp"
             android:paddingBottom="14dp"
-            android:layout_margin="40dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
             android:background="@drawable/blue_button"
             android:textAllCaps="false"/>
     </RelativeLayout>

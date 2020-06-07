@@ -78,19 +78,19 @@ public class EmployeeViewShiftsView extends AppCompatActivity {
 
         final LinearLayout shiftContent = findViewById(R.id.view_shifts_shift_content);
 
-        LocalDate nextSunday = LocalDate.now().with(TemporalAdjusters.next(DayOfWeek.SUNDAY));
+        LocalDate nextSunday = LocalDate.now().with((DayOfWeek.SUNDAY));
 
         final MaterialCalendarView materialCalendarView = findViewById(R.id.emp_view_shifts_calendarView);
         materialCalendarView.state().edit().setMinimumDate(nextSunday)
-                .setMaximumDate(CalendarDay.from(nextSunday.plusDays(7))).commit();
+                .setMaximumDate(CalendarDay.from(nextSunday.plusDays(6))).commit();
 
         LocalDate now = LocalDate.now();
         TemporalField fieldISO = WeekFields.of(Locale.US).dayOfWeek();
 
 
 
-        LocalDate sunday = now.with(fieldISO, 1).plusDays(7);
-        LocalDate next = sunday.plusDays(14);
+        LocalDate sunday = now.with(fieldISO, 1);
+        LocalDate next = sunday.plusDays(6);
 
         String fromDate = sunday.toString();
 
